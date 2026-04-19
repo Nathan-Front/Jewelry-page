@@ -13,15 +13,27 @@ async function fetchHTML() {
 
     const resFirst = await fetch("./page/home/firstSection.html");
     const firstHTML = await resFirst.text();
-    homeMain.insertAdjacentHTML("afterbegin", firstHTML);
+    homeMain.insertAdjacentHTML("beforeend", firstHTML);
 
     const resSecond = await fetch("./page/home/secondSection.html");
     const secondHTML = await resSecond.text();
-    homeMain.insertAdjacentHTML("afterend", secondHTML);
+    homeMain.insertAdjacentHTML("beforeend", secondHTML);
+
+    const resThird = await fetch("/page/home/thirdSection.html");
+    const thirdHTML = await resThird.text();
+    homeMain.insertAdjacentHTML("beforeend", thirdHTML);
+
+    const resFourth = await fetch("/page/home/fourthSection.html");
+    const fourthHTML = await resFourth.text();
+    homeMain.insertAdjacentHTML("beforeend", fourthHTML);
 
     const resFoot = await fetch("./components/footer/footer.html");
     const footHTML = await resFoot.text();
     body.insertAdjacentHTML("beforeend", footHTML);
+
+    const resMobileNav = await fetch("./components/navigation/mobileNav.html");
+    const mobileNav = await resMobileNav.text();
+    body.insertAdjacentHTML("beforeend", mobileNav);
 }
 document.addEventListener("DOMContentLoaded", fetchHTML);
 

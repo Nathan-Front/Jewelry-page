@@ -1,6 +1,6 @@
 .home-second-section {
     width: 100%;
-    padding: 30px 0;
+    padding: 50px 0;
 }
 .item-list-wrap {
     width: 95%;
@@ -49,5 +49,10 @@
 }
 .item-list-wrap> li> button:hover> p {
     color: #C9A96E;
+}
+@media only screen and (max-width: 599px) {
+    .item-list-wrap {
+        width: 80%;
+    }
 }
 

@@ -1,0 +1,72 @@
+.home-fourth-section {
+    width: 100%;
+    display: flex;
+    padding: 50px 0;
+}
+.home-fourth-section> div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.home-fourth-section> div> h3 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: 0 0 2rem 0;
+}
+.home-fourth-section> div> p {
+    margin: 0;
+}
+.home-fourth-section> form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.home-fourth-section> form> label,
+.home-fourth-section> form> input,
+.home-fourth-section> form> textarea,
+.home-fourth-section> form> button {
+    align-self: flex-start;
+    width: 80%;
+    margin-left: 5%;
+}
+.home-fourth-section> form> input {
+    margin-bottom: 10px;
+    padding: 5px 3px;
+}
+.home-fourth-section> form> textarea {
+    height: 150px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.home-fourth-section> form> button {
+    width: 30%;
+    padding: 5px;
+    font-size: clamp(1.1rem, 1.3vw, 2rem);
+    background-color: #1A1A1A;
+    color: #E5E4E2;
+    border: none;
+    border-radius: 0.25em;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 599px) {
+    .home-fourth-section {
+        flex-direction: column;
+        gap: 2em;
+    }
+    .home-fourth-section> div> h3 {
+        margin: 0 0 1rem 0;
+    }
+    .home-fourth-section> form {
+        justify-content: center;
+    }
+    .home-fourth-section> form> label,
+    .home-fourth-section> form> input,
+    .home-fourth-section> form> textarea,
+    .home-fourth-section> form> button {
+        align-self: center;
+        width: 80%;
+        margin-left: 0;
+    }
+}
