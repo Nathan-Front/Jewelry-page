@@ -1,0 +1,42 @@
+.about-first-section {
+    width: 100%;
+    display: flex;
+}
+.about-first-section> article {
+    flex: 1;
+}
+.about-first-section> article> h3,
+.about-first-section> article> p {
+    margin: 0 0 0 2rem;
+}
+.about-first-section> article> h3 {
+    margin: 2rem 0 2rem 2rem;
+    font-size: clamp(1.5rem, 3vw, 3rem);
+}
+.about-first-section> img {
+    width: clamp(20%, 50vw, 90%);
+   border-radius: 1.25em;
+    padding: 1rem;
+}
+@media only screen and (max-width: 768px) {
+    .about-first-section {
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .about-first-section> article {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .about-first-section> article> h3,
+    .about-first-section> article> p {
+        margin: 1.5rem 0 0 0;
+    }
+    .about-first-section> article> h3 {
+        margin-bottom: 1rem;
+    }
+    .about-first-section> img {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
