@@ -35,11 +35,18 @@ async function fetchHTML() {
         ])
     section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));    
     }
-    if(page === "about") {
+    if (page === "about") {
         const section = await Promise.all([
             fetch("./page/about/aboutFirstSection.html").then(res => res.text()),
             fetch("./page/about/aboutSecondSection.html").then(res => res.text()),
             fetch("./page/about/aboutThirdSection.html").then(res => res.text()),
+        ])
+        section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+    }
+    if (page === "contact") {
+        const section = await Promise.all([
+            fetch("./page/home/fourthSection.html").then(res => res.text()),
+            fetch("./page/contact/contactSecondSection.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
     }
