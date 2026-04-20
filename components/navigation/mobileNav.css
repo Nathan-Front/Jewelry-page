@@ -18,15 +18,16 @@
         margin: 0;
         padding: 0;
     }
-    .mobile-navigation-wrap> ul> li {
+    .mobile-navigation-wrap> ul> li> a {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-    .mobile-navigation-wrap> ul> li> img {
+    .mobile-navigation-wrap> ul> li> a> img {
         width: 25px;
     }
-    .mobile-navigation-wrap> ul> li> span {
+    .mobile-navigation-wrap> ul> li> a> span {
         font-size: 10px;
+        color: black;
     }
 }

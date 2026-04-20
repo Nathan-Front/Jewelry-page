@@ -1,5 +1,11 @@
 async function fetchContents() {
     const body = document.body;
+    const resShop = await fetch("./shop.html");
+    const shopHTML = await resShop.text();
+    const parser = new DOMParser();
+    const shop = parser.parseFromString(shopHTML, "text/html");
+    const shopMain = shop.getElementById("shop-main");
+    body.appendChild(shopMain);
     const [
         nav,
         first,
@@ -26,17 +32,17 @@ async function fetchContents() {
         fetch("./components/navigation/mobileNav.html").then(res => res.text())
     ]);
 
-    body.insertAdjacentHTML("afterbegin", nav);
-    body.insertAdjacentHTML("beforeend", first);
-    body.insertAdjacentHTML("beforeend", second);
-    body.insertAdjacentHTML("beforeend", third);
-    body.insertAdjacentHTML("beforeend", fourth);
-    body.insertAdjacentHTML("beforeend", fifth);
-    body.insertAdjacentHTML("beforeend", sixth);
-    body.insertAdjacentHTML("beforeend", seventh);
-    body.insertAdjacentHTML("beforeend", eighth);
-    body.insertAdjacentHTML("beforeend", footer);
-    body.insertAdjacentHTML("beforeend", mobileNav);
+    shopMain.insertAdjacentHTML("afterbegin", nav);
+    shopMain.insertAdjacentHTML("beforeend", first);
+    shopMain.insertAdjacentHTML("beforeend", second);
+    shopMain.insertAdjacentHTML("beforeend", third);
+    shopMain.insertAdjacentHTML("beforeend", fourth);
+    shopMain.insertAdjacentHTML("beforeend", fifth);
+    shopMain.insertAdjacentHTML("beforeend", sixth);
+    shopMain.insertAdjacentHTML("beforeend", seventh);
+    shopMain.insertAdjacentHTML("beforeend", eighth);
+    shopMain.insertAdjacentHTML("beforeend", footer);
+    shopMain.insertAdjacentHTML("beforeend", mobileNav);
 }
 
 document.addEventListener("DOMContentLoaded", fetchContents);
