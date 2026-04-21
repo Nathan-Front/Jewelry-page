@@ -47,11 +47,14 @@ async function fetchHTML() {
         const section = await Promise.all([
             fetch("./page/home/fourthSection.html").then(res => res.text()),
             fetch("./page/contact/contactSecondSection.html").then(res => res.text()),
+            fetch("./page/contact/contactThirdSection.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+        FAQ();
     }
     app.insertAdjacentHTML("beforeend", foot);
     app.insertAdjacentHTML("beforeend", mobileNav);
+    
 }
 
 document.addEventListener("DOMContentLoaded", fetchHTML);

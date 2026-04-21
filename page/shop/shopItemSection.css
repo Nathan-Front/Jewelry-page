@@ -56,7 +56,7 @@ section> article> ul> li {
     overflow: hidden;
     transition: all 0.3s ease;
 }
-.earrings-wrap> li:hover .button-wrap {
+.item-wrap> li:hover .button-wrap {
     opacity: 1;
     max-height: 500px;
 }
