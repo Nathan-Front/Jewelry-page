@@ -21,37 +21,82 @@
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
-.item-list-wrap> li> button {
+.item-list-wrap> li {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     border: none;
-    opacity: calc(0.6);
 }
-.item-list-wrap> li> button:hover {
-    cursor: pointer;
+.item-list-wrap> li:hover {
     opacity: calc(1);
 }
-.item-list-wrap> li> button> img {
+.change-on-hover {
     width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.change-on-hover> img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     aspect-ratio: 1 / 1;
-    
 }
-.item-list-wrap> li> button:hover> img {
-    transform: scale(1.04);
-    transition: transform 0.3s ease-in-out;
-    
+.change-over {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(100%); 
+    transition: transform 0.4s ease;
+    opacity: 0.9;
 }
-.item-list-wrap> li> button> p{
+.change-over> ul {
+    margin: 0 auto;
+    padding: 0;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.change-over> ul> li:first-child> p {
+    text-align: center;
+    font-weight: bold;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    margin-top: 20px;
+}
+.change-over> ul> li> p {
+    font-size: clamp(0.7rem, 1vw, 1.3rem);
+    margin: 0;
+    padding: 0;
+}
+.change-over> ul> li> p> span {
+    font-weight: bold;
+}
+.change-over> button {
+    width: 95%;
+    border: none;
+    background-color: #1A1A1A;
+    color: #E5E4E2;
+    border-radius: 0.25em;
+    margin-top: auto;
+    padding: 3px 10px;
+}
+.item-list-wrap> li:hover .change-over {
+    transform: translateX(0);
+    flex-direction: column;
+}
+.item-list-wrap> li> p{
     text-align: center;
     font-weight: bold;
     margin: 0;
     font-size: clamp(1.1rem, 1.5vw, 2rem);
     margin: 1em 0;
 }
-.item-list-wrap> li> button:hover> p {
+.item-list-wrap> li:hover> p {
     color: #C9A96E;
 }
 @media only screen and (max-width: 599px) {

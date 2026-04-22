@@ -15,25 +15,27 @@ async function fetchHTML() {
 
     if (page === "home") {
         const section = await Promise.all([
-        fetch("./page/home/firstSection.html").then(res => res.text()),
-        fetch("./page/home/secondSection.html").then(res => res.text()),
-        fetch("./page/home/thirdSection.html").then(res => res.text()),
-        fetch("./page/home/fourthSection.html").then(res => res.text()),
-    ])
-    section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+            fetch("./page/home/firstSection.html").then(res => res.text()),
+            fetch("./page/home/secondSection.html").then(res => res.text()),
+            fetch("./page/home/thirdSection.html").then(res => res.text()),
+            fetch("./page/home/fourthSection.html").then(res => res.text()),
+        ])
+        section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+        toShopButton();
     }
     if (page === "shop") {
         const section = await Promise.all([
-        fetch("./page/shop/shopFirstSection.html").then(res => res.text()),
-        fetch("./page/shop/shopSecondSection.html").then(res => res.text()),
-        fetch("./page/shop/shopThirdSection.html").then(res => res.text()),
-        fetch("./page/shop/shopFourthSection.html").then(res => res.text()),
-        fetch("./page/shop/shopFifthSection.html").then(res => res.text()),
-        fetch("./page/shop/shopSixthSection.html").then(res => res.text()),
-        fetch("./page/shop/shopSeventhSection.html").then(res => res.text()),
-        fetch("./page/shop/shopEigthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopFirstSection.html").then(res => res.text()),
+            fetch("./page/shop/shopSecondSection.html").then(res => res.text()),
+            fetch("./page/shop/shopThirdSection.html").then(res => res.text()),
+            fetch("./page/shop/shopFourthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopFifthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopSixthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopSeventhSection.html").then(res => res.text()),
+            fetch("./page/shop/shopEigthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopNinthSection.html").then(res => res.text()),
         ])
-    section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));    
+        section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
     }
     if (page === "about") {
         const section = await Promise.all([
@@ -54,7 +56,18 @@ async function fetchHTML() {
     }
     app.insertAdjacentHTML("beforeend", foot);
     app.insertAdjacentHTML("beforeend", mobileNav);
-    
+
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1); //this remove the '#'
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+
 }
 
 document.addEventListener("DOMContentLoaded", fetchHTML);
