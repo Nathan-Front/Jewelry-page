@@ -102,6 +102,25 @@ footer {
     margin: 0;
     font-size: clamp(0.7rem, 1.2vw, 1.3rem);
 }
+.input-error {
+  border: 1px solid red;
+  border-radius: 0.25em;
+}
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #ffffff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+  margin-right: 8px;
+}
+@keyframes rotation {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.hidden { display: none; }
 @media only screen and (max-width: 599px) {
     footer  {
         padding-bottom: 50px;

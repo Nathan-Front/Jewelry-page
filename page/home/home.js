@@ -35,11 +35,17 @@ function customerMessage() {
     const userMessage = document.getElementById("message-input");
     
     const form = document.getElementById("form");
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", (e) => {
         e.preventDefault();
+        //Select the honeypot value
+        const honey = form.querySelector('input[name="_honey"]').value;
+        //If 'honey' is NOT empty, it's a bot!
+        if (honey) {
+            console.log("Bot submission detected.");
+            return; 
+        }
         const validate = validateEmail(userMail.value);
         if(!validate) {
-            alert("Type correct email format");
             userMail.classList.add("input-error");
             return;
         }
@@ -49,15 +55,18 @@ function customerMessage() {
             contact: userContact.value,
             message: userMessage.value
         }
-
-        await fetch(scriptURL, {
-            method: "POST",
-            body: JSON.stringify(data)
-        });
-        alert("Saved to Google Sheet!");
-        userName.value = "";
-        userMail.value = "";
-        userContact.value = "";
-        userMessage.value = "";
+        try {
+            fetch(scriptURL, {
+                method: "POST",
+                body: JSON.stringify(data)
+            });
+            alert("Thank you for your message!");
+            userName.value = "";
+            userMail.value = "";
+            userContact.value = "";
+            userMessage.value = "";
+        } catch (error) {
+            alert("An error occurred. Please try again later.");
+        }
     })
 }

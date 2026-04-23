@@ -57,7 +57,9 @@ async function fetchHTML() {
     }
     app.insertAdjacentHTML("beforeend", foot);
     app.insertAdjacentHTML("beforeend", mobileNav);
+    subscribe();
 
+    //Smooth scroll to section if URL has a hash
     if (window.location.hash) {
         const targetId = window.location.hash.substring(1); //this remove the '#'
         const targetElement = document.getElementById(targetId);

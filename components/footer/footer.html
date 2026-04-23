@@ -84,10 +84,25 @@
       </ul>
     </div>
     <div class="footer-form-wrap">
-      <form action="">
-        <label for="email-input">Stay Updated</label>
-        <input type="text" placeholder="enter email" id="email-input" />
-        <button type="submit">Subscribe</button>
+      <form action="" id="subscribe-form">
+        <label for="subscribe-input">Stay Updated</label>
+        <input
+          type="text"
+          placeholder="enter email"
+          name="Subscribers"
+          id="subscribe-input"
+        />
+        <input
+          type="text"
+          name="_honey"
+          style="display: none"
+          tabindex="-1"
+          autocomplete="off"
+        />
+        <button type="submit" id="submit-button">
+          <span id="loader" class="spinner hidden"></span>
+          <span id="btn-text">Subscribe</span>
+        </button>
       </form>
     </div>
   </div>
