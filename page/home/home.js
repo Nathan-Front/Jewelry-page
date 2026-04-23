@@ -19,8 +19,45 @@ function toShopButton() {
                 window.location.href = "shop.html#anklets-section";
             } else if (toShopLink && toShopLink.dataset.category === "others") {
                 window.location.href = "shop.html#others-section";
+            } else {
+                window.location.href = "shop.html";
             }
-            
         })
+    })
+}
+
+
+function customerMessage() {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzPsUyYVER0EArOvD-gUo2xLnPWzkbm52mp37UPqEKbCheDTKKayV4aWlIe7aHaT5b_/exec";
+    const userName = document.getElementById("name-input");
+    const userMail = document.getElementById("mail-input");
+    const userContact = document.getElementById("contact-input");
+    const userMessage = document.getElementById("message-input");
+    
+    const form = document.getElementById("form");
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const validate = validateEmail(userMail.value);
+        if(!validate) {
+            alert("Type correct email format");
+            userMail.classList.add("input-error");
+            return;
+        }
+        const data = {
+            name: userName.value,
+            email: userMail.value,
+            contact: userContact.value,
+            message: userMessage.value
+        }
+
+        await fetch(scriptURL, {
+            method: "POST",
+            body: JSON.stringify(data)
+        });
+        alert("Saved to Google Sheet!");
+        userName.value = "";
+        userMail.value = "";
+        userContact.value = "";
+        userMessage.value = "";
     })
 }

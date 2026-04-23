@@ -22,6 +22,7 @@ async function fetchHTML() {
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
         toShopButton();
+        customerMessage();
     }
     if (page === "shop") {
         const section = await Promise.all([
