@@ -2,9 +2,7 @@
 .shop-item-section {
     width: 100%;
     padding: 0;
-}
-#others-section {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
 }
 .shop-item-section> article {
     text-align: center;
@@ -55,7 +53,7 @@
     overflow: hidden;
     transition: all 0.3s ease;
 }
-.item-wrap> li:hover .button-wrap {
+.item-list-wrap> li:hover .button-wrap {
     opacity: 1;
     max-height: 500px;
 }

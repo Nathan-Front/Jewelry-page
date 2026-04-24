@@ -38,6 +38,7 @@ async function fetchHTML() {
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
         filterCategory();
+        sortByPrice();
     }
     if (page === "about") {
         const section = await Promise.all([
