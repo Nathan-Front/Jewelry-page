@@ -14,7 +14,7 @@ h1  {
     margin: 0;
     font-family: 'Playfair Display', serif;
 }
-a, p, span, h1, h2, h3, h4, h5, label, input, button {
+a, p, span, h1, h2, h3, h4, h5, label, input, button, legend {
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
 }

@@ -1,12 +1,18 @@
 function subscribe() {
     const scriptURL = "https://script.google.com/macros/s/AKfycbxYFem8jewuv1ApcRQfBYPDYQIaZePy6WA_8icUmQll-FLd_ukD61-OrX7m5sS_D5eR/exec";
     const form = document.getElementById("subscribe-form");
+    if (!form) {
+        return; 
+    }
     const emailInput = document.getElementById("subscribe-input");
     const loader = document.getElementById("loader");
     const btnText = document.getElementById("btn-text");
     const submitBtn = form.querySelector('button[type="submit"]');
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        if (emailInput.value.trim() === "") {
+            return;
+        }
         //Spinner and button state
         loader.classList.remove("hidden");
         btnText.innerText = "Checking...";   

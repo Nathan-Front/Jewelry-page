@@ -37,6 +37,7 @@ async function fetchHTML() {
             fetch("./page/shop/shopNinthSection.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+        filterCategory();
     }
     if (page === "about") {
         const section = await Promise.all([
