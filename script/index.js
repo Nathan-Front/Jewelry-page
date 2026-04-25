@@ -1,6 +1,7 @@
 async function fetchHTML() {
     const page = document.body.dataset.page;
     const app = document.getElementById("app");
+    
     const [
         nav,
         foot,
@@ -35,10 +36,24 @@ async function fetchHTML() {
             fetch("./page/shop/shopSeventhSection.html").then(res => res.text()),
             fetch("./page/shop/shopEigthSection.html").then(res => res.text()),
             fetch("./page/shop/shopNinthSection.html").then(res => res.text()),
+            fetch("./page/shop/shopInner/checkItem.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+            //Smooth scroll to section if URL has a hash
+        if (window.location.hash) {
+            const targetId = window.location.hash.substring(1); //this remove the '#'
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                setTimeout(() => {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
         filterCategory();
         sortByPrice();
+        buyNowButtons();
+       
     }
     if (page === "about") {
         const section = await Promise.all([
@@ -60,18 +75,6 @@ async function fetchHTML() {
     app.insertAdjacentHTML("beforeend", foot);
     app.insertAdjacentHTML("beforeend", mobileNav);
     subscribe();
-
-    //Smooth scroll to section if URL has a hash
-    if (window.location.hash) {
-        const targetId = window.location.hash.substring(1); //this remove the '#'
-        const targetElement = document.getElementById(targetId);
-
-        if (targetElement) {
-            setTimeout(() => {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-    }
 
 }
 

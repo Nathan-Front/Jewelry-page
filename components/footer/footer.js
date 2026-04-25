@@ -13,10 +13,6 @@ function subscribe() {
         if (emailInput.value.trim() === "") {
             return;
         }
-        //Spinner and button state
-        loader.classList.remove("hidden");
-        btnText.innerText = "Checking...";   
-        submitBtn.disabled = true;
 
         //Select the honeypot value
         const honey = form.querySelector('input[name="_honey"]').value;
@@ -33,6 +29,10 @@ function subscribe() {
         const data = {
             email: emailInput.value
         }
+        //Spinner and button state
+        loader.classList.remove("hidden");
+        btnText.innerText = "Checking...";   
+        submitBtn.disabled = true;
         try {
             const response = await fetch(scriptURL, {
                 method: "POST",

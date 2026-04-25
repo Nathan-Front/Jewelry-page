@@ -89,3 +89,25 @@ function sortByPrice() {
     });
 }
 
+function buyNowButtons() {
+    const buyNowBtns = document.querySelectorAll(".buy-now-btn");
+    
+    buyNowBtns.forEach((btn, index) => {
+        btn.addEventListener("click", (e) => {
+            const imageSelectedStorage = JSON.parse(localStorage.getItem("selectedItemImage")) || [];
+            const item = e.currentTarget.closest("li");
+            const imgSrc = item.querySelector("img");
+            imageSelectedStorage.push(imgSrc.src);
+            localStorage.setItem("selectedItemImage", JSON.stringify(imageSelectedStorage));
+            const itemDisplay = document.querySelector(".earrings-article");
+            itemDisplay.classList.add("activePopup");
+            const itemCategory = e.currentTarget.dataset.item;
+            renderShopItems(itemCategory);
+            const overlay = document.querySelector(".overlay");
+            overlay.classList.add("activeOverlay");
+            const body = document.body;
+            body.classList.add("no-scroll");
+        });
+    });
+    
+}
