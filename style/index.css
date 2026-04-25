@@ -6,6 +6,9 @@ body {
     margin: 0;
     padding: 0;
 }
+#app {
+    overflow: hidden;
+}
 ul{
     list-style: none;
 }
@@ -38,7 +41,9 @@ p {
   background: #666; 
 }
 
-
+.no-scroll {
+    overflow: hidden !important;
+}
 
 /*
 #E5E4E2

@@ -4,24 +4,40 @@
     <ul id="popup-list-img"></ul>
   </div>
   <div class="right-side">
-    <h3>Earrings</h3>
-    <p>Price: $<span>0.00</span></p>
+    <h4 class="article-name">Earrings</h4>
+    <p>Price: <span class="article-price">0.00</span></p>
     <span>Free Shipping</span>
-    <div>
-      <button type="button">-</button>
-      <span>0</span>
-      <button type="button">+</button>
+    <div class="right-side-count">
+      <button type="button" id="decrease-count">-</button>
+      <span id="item-count">1</span>
+      <button type="button" id="increase-count">+</button>
     </div>
-    <div>
+    <div class="right-side-cart-button">
       <button type="button" id="cancel-btn">Cancel</button>
       <button type="button" id="add-to-cart-btn">Add to Cart</button>
     </div>
-
     <ul>
-      <li><img src="" alt="mastercard" /></li>
-      <li><img src="" alt="visa" /></li>
-      <li><img src="" alt="paypal" /></li>
+      <li>
+        <img
+          src="./images/shop/payment/mastercard-full-svgrepo-com.svg"
+          alt="mastercard"
+        />
+      </li>
+      <li>
+        <img
+          src="./images/shop/payment/visa-4-logo-svgrepo-com.svg"
+          alt="visa"
+        />
+      </li>
+      <li>
+        <img src="./images/shop/payment/paypal-svgrepo-com.svg" alt="paypal" />
+      </li>
+      <li>
+        <img
+          src="./images/shop/payment/amazon-pay-svgrepo-com.svg"
+          alt="amazonpay"
+        />
+      </li>
     </ul>
   </div>
 </article>
-<div class="overlay"></div>

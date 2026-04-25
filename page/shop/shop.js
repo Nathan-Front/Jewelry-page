@@ -91,18 +91,19 @@ function sortByPrice() {
 
 function buyNowButtons() {
     const buyNowBtns = document.querySelectorAll(".buy-now-btn");
-    
     buyNowBtns.forEach((btn, index) => {
         btn.addEventListener("click", (e) => {
-            const imageSelectedStorage = JSON.parse(localStorage.getItem("selectedItemImage")) || [];
+            const imageSelectedStorage = JSON.parse(sessionStorage.getItem("selectedItemImage")) || [];
             const item = e.currentTarget.closest("li");
+            const itemName = item.querySelector("h4").textContent
             const imgSrc = item.querySelector("img");
-            imageSelectedStorage.push(imgSrc.src);
-            localStorage.setItem("selectedItemImage", JSON.stringify(imageSelectedStorage));
+            const summary = {article: itemName, price: item.dataset.price, source: imgSrc.src};
+            sessionStorage.setItem("selectedItemImage", JSON.stringify(summary));
             const itemDisplay = document.querySelector(".earrings-article");
             itemDisplay.classList.add("activePopup");
             const itemCategory = e.currentTarget.dataset.item;
-            renderShopItems(itemCategory);
+            renderShopItems();
+            renderImage(item.dataset.article);
             const overlay = document.querySelector(".overlay");
             overlay.classList.add("activeOverlay");
             const body = document.body;
@@ -110,4 +111,26 @@ function buyNowButtons() {
         });
     });
     
+}
+
+function displayCart() {
+    const cartBtn = document.getElementById("show-cart");
+    cartBtn.addEventListener("click", () => {
+        const cartDialog = document.querySelector(".cart-container");
+        cartDialog.classList.add("cart-container-active");
+        const overlay = document.querySelector(".overlay");
+        overlay.classList.add("activeOverlay");
+        const body = document.body;
+        body.classList.add("no-scroll");
+    });
+
+    const closeCartBtn = document.getElementById("close-cart");
+    closeCartBtn.addEventListener("click", () => {
+        const cartDialog = document.querySelector(".cart-container");
+        cartDialog.classList.remove("cart-container-active");
+        const overlay = document.querySelector(".overlay");
+        overlay.classList.remove("activeOverlay");
+        const body = document.body;
+        body.classList.remove("no-scroll");
+    });
 }

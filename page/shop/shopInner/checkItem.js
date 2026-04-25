@@ -1,10 +1,11 @@
-async function renderShopItems(itemCategory) {
+async function renderShopItems() {
     const mainImg = document.getElementById("main-image-display");
-    const imageSelectedStorage = JSON.parse(localStorage.getItem("selectedItemImage")) || [];
-    if (!imageSelectedStorage.length) return;
-    mainImg.src = imageSelectedStorage;
+    const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
+    if (!data) return;
+    mainImg.src = data.source;
     closeItemDisplay();
-    renderImage(itemCategory);
+    renderImage();
+    itemCountDisplay();
 }
 
 async function closeItemDisplay() {
@@ -13,7 +14,7 @@ async function closeItemDisplay() {
     cancelBtn.addEventListener("click", () => {
         const itemDisplay = document.querySelector(".earrings-article");
         itemDisplay.classList.remove("activePopup");
-        localStorage.removeItem("selectedItemImage");
+        sessionStorage.removeItem("selectedItemImage");
         listImg.innerHTML = "";
         const overlay = document.querySelector(".overlay");
         overlay.classList.remove("activeOverlay");
@@ -23,8 +24,9 @@ async function closeItemDisplay() {
 }
 
 async function renderImage(itemCategory) {
+    const articleName = document.querySelector(".article-name");
     let imgSources = [];
-    if (itemCategory === "earring") {
+    if (itemCategory === "Earring") {
         imgSources = [ 
             {src: "./images/shop/earings/gold.webp", alt: "Earring 1"},
             {src: "./images/shop/earings/gold2.webp", alt: "Earring 2"},
@@ -32,15 +34,15 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/earings/gold2.webp", alt: "Earring 4"},
             {src: "./images/shop/earings/gold.webp", alt: "Earring 5"},
         ];
-    } else if (itemCategory === "necklace") {
+    } else if (itemCategory === "Necklace") {
         imgSources = [
-            {src: "./images/shop/earings/gold.webp", alt: "Ring 1"},
-            {src: "./images/shop/earings/gold.webp", alt: "Ring 2"},
-            {src: "./images/shop/earings/gold.webp", alt: "Ring 3"},
-            {src: "./images/shop/earings/gold.webp", alt: "Ring 4"},
-            {src: "./images/shop/earings/gold.webp", alt: "Ring 5"},
+            {src: "./images/shop/necklace/chain.webp", alt: "Necklace 1"},
+            {src: "./images/shop/necklace/birthstone.webp", alt: "Necklace 2"},
+            {src: "./images/shop/necklace/necklace1.webp", alt: "Necklace 3"},
+            {src: "./images/shop/necklace/pearl.webp", alt: "Necklace 4"},
+            {src: "./images/shop/necklace/chain.webp", alt: "Necklace 5"},
         ];
-    } else if (itemCategory === "bracelet") {
+    } else if (itemCategory === "Bracelet") {
         imgSources = [
             {src: "./images/shop/bracelet/beaded.webp", alt: "Bracelet 1"},
             {src: "./images/shop/bracelet/braided.webp", alt: "Bracelet 2"},
@@ -48,7 +50,7 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/bracelet/chain.webp", alt: "Bracelet 4"},
             {src: "./images/shop/bracelet/beaded.webp", alt: "Bracelet 5"},
         ];
-    } else if (itemCategory === "ring") {
+    } else if (itemCategory === "Ring") {
         imgSources = [
             {src: "./images/shop/rings/threeStone.webp", alt: "Ring 1"},
             {src: "./images/shop/rings/solitaire.webp", alt: "Ring 2"},
@@ -56,7 +58,7 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/rings/mood.webp", alt: "Ring 4"},
             {src: "./images/shop/rings/threeStone.webp", alt: "Ring 5"},
         ];
-    } else if (itemCategory === "bangle") {
+    } else if (itemCategory === "Bangle") {
         imgSources = [
             {src: "./images/shop/bangles/solidMetal.webp", alt: "Bangle 1"},
             {src: "./images/shop/bangles/cuff.webp", alt: "Bangle 2"},
@@ -64,7 +66,7 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/bangles/hinged.webp", alt: "Bangle 4"},
             {src: "./images/shop/bangles/solidMetal.webp", alt: "Bangle 5"},
         ];
-    } else if (itemCategory === "tiara") {
+    } else if (itemCategory === "Tiara") {
         imgSources = [
             {src: "./images/shop/tiara/fringe.webp", alt: "Tiara 1"},
             {src: "./images/shop/tiara/meander.webp", alt: "Tiara 2"},
@@ -72,7 +74,7 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/tiara/bandeau.webp", alt: "Tiara 4"},
             {src: "./images/shop/tiara/fringe.webp", alt: "Tiara 5"},
         ];
-    } else if (itemCategory === "anklet") {
+    } else if (itemCategory === "Anklet") {
         imgSources = [
             {src: "./images/shop/anklet/stringAnklet.webp", alt: "Anklet 1"},
             {src: "./images/shop/anklet/beadedAnklet.webp", alt: "Anklet 2"},
@@ -80,7 +82,7 @@ async function renderImage(itemCategory) {
             {src: "./images/shop/anklet/demiFineAnklet.webp", alt: "Anklet 4"},
             {src: "./images/shop/anklet/stringAnklet.webp", alt: "Anklet 5"},
         ];
-    } else if (itemCategory === "other") {
+    } else if (itemCategory === "Other") {
         imgSources = [
             {src: "./images/shop/others/watch.webp", alt: "Other 1"},
             {src: "./images/shop/others/pocket.webp", alt: "Other 2"},
@@ -91,7 +93,7 @@ async function renderImage(itemCategory) {
     }
 
     const listImg = document.getElementById("popup-list-img");
-    imgSources.forEach((source, index) => {
+    imgSources.forEach((source) => {
         const li = document.createElement("li");
         const button = document.createElement("button");
         const img = document.createElement("img");
@@ -100,5 +102,39 @@ async function renderImage(itemCategory) {
         button.appendChild(img);
         li.appendChild(button);
         listImg.appendChild(li);
+        button.addEventListener("click", () => {
+            const mainImg = document.getElementById("main-image-display");
+            mainImg.src = source.src;
+        });
+    });
+
+    const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
+    if (!data) return;
+    const articleTitle= data.article;
+    const articlePrice = data.price;
+    const articleTitleDisplay = document.querySelector(".article-name");
+    articleTitleDisplay.textContent = articleTitle;
+    const articlePriceDisplay = document.querySelector(".article-price");
+    articlePriceDisplay.textContent = `$${articlePrice}`;
+}
+function itemCountDisplay() {
+    const increaseBtn = document.getElementById("increase-count");
+    const decreaseBtn = document.getElementById("decrease-count");
+    const countDisplay = document.getElementById("item-count");
+    let count = 1;
+    const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
+    let totalPrice = 0;
+    increaseBtn.addEventListener("click", () => {
+        count++;
+        countDisplay.textContent = count;
+        totalPrice = count * data.price;
+    });
+
+    decreaseBtn.addEventListener("click", () => {
+        if (count > 1) {
+            count--;
+            countDisplay.textContent = count;
+            totalPrice = count * data.price;
+        }
     });
 }
