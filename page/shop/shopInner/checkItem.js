@@ -6,21 +6,70 @@ async function renderShopItems() {
     closeItemDisplay();
     renderImage();
     itemCountDisplay();
+    
+}
+
+async function addToCart() {
+    const addToCartBtn = document.getElementById("add-to-cart-btn");
+    const cart = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    addToCartBtn.addEventListener("click", () => {
+        const imageSelectedStorage = JSON.parse(sessionStorage.getItem("selectedItemImage")) || {};
+        const articleName = document.querySelector(".article-name").textContent;
+        const articlePrice = document.querySelector(".article-price").textContent;
+        const itemCount = document.querySelector("#item-count").textContent;
+        const cartItem = {
+            name: articleName,
+            image: imageSelectedStorage.source,
+            price: articlePrice.replace("$", ""),
+            quantity: parseInt(itemCount),
+            subTotal: parseFloat(articlePrice.replace("$", "")) * parseInt(itemCount)
+        };
+        cart.push(cartItem);
+        sessionStorage.setItem("cartItem", JSON.stringify(cart));
+        alert(`${articleName} has been added to your cart.`);
+        hideItemModal();
+        removeOverlay();
+        displayCartCount();
+        cartContent();
+        sessionStorage.removeItem("selectedItemImage");
+    }); 
+    
+}
+
+function displayCartCount() {
+   const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+   if (cartItem) {
+       const cartCount = document.getElementById("cart-count");
+       const total = cartItem.reduce((total, item) => total + item.quantity, 0);
+       cartCount.textContent = total;
+       const cartItemCounter = document.getElementById("cart-item-counter");
+       cartItemCounter.textContent = total + (total <= 1 ? " item" : " items");
+   }
 }
 
 async function closeItemDisplay() {
     const cancelBtn = document.getElementById("cancel-btn");
     const listImg = document.getElementById("popup-list-img");
     cancelBtn.addEventListener("click", () => {
-        const itemDisplay = document.querySelector(".earrings-article");
-        itemDisplay.classList.remove("activePopup");
+        hideItemModal();
         sessionStorage.removeItem("selectedItemImage");
+        sessionStorage.removeItem("cartItem");
         listImg.innerHTML = "";
-        const overlay = document.querySelector(".overlay");
-        overlay.classList.remove("activeOverlay");
-        const body = document.body;
-        body.classList.remove("no-scroll");
+        removeOverlay();
     });
+}
+
+function applyOverlay() {
+    const overlay = document.querySelector(".overlay");
+    overlay.classList.add("activeOverlay");
+    const body = document.body;
+    body.classList.add("no-scroll");
+}
+function removeOverlay() {
+    const overlay = document.querySelector(".overlay");
+    overlay.classList.remove("activeOverlay");
+    const body = document.body;
+    body.classList.remove("no-scroll");
 }
 
 async function renderImage(itemCategory) {
@@ -118,8 +167,8 @@ async function renderImage(itemCategory) {
     articlePriceDisplay.textContent = `$${articlePrice}`;
 }
 function itemCountDisplay() {
-    const increaseBtn = document.getElementById("increase-count");
-    const decreaseBtn = document.getElementById("decrease-count");
+    const increaseBtn = document.querySelector(".increase-count");
+    const decreaseBtn = document.querySelector(".decrease-count");
     const countDisplay = document.getElementById("item-count");
     let count = 1;
     const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
@@ -137,4 +186,105 @@ function itemCountDisplay() {
             totalPrice = count * data.price;
         }
     });
+}
+
+function cartContent() {
+    const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    const cartList = document.getElementById("your-cart");
+    if (!cartList) return;
+    cartList.innerHTML = "";
+    cartItem.forEach(item => {
+        const li = document.createElement("li");
+        li.innerHTML =`
+            <img src="${item.image}" alt="${item.name}" />
+            <div>
+                <h4>${item.name}</h4>
+                <p>Price: ${item.price}</p>
+                <div>
+                    <button class="decrease-quantity">-</button>
+                    <span class="item-quantity">${item.quantity}</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                
+                <button type="button" class="remove-item">Remove</button>
+            </div>
+        `;
+        cartList.appendChild(li);
+    });
+    cartQuantityUpdate();
+    cartItemRemoval();
+    subTotal();
+}
+
+function onPageReloadCart() {
+    const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    const cartCount = document.querySelector("#cart-count");
+    if (!cartCount) return;
+    const totalCount = cartItem.reduce((sum, item) => sum + item.quantity, 0);
+    if (totalCount > 0) {
+        cartCount.textContent = totalCount;
+        const cartItemCounter = document.getElementById("cart-item-counter");
+        cartItemCounter.textContent = totalCount + (totalCount === 1 ? " item" : " items");
+    } 
+}
+
+function cartQuantityUpdate() {
+    const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    const decreaseBtns = document.querySelectorAll(".decrease-quantity");
+    const increaseBtns = document.querySelectorAll(".increase-quantity");
+    decreaseBtns.forEach((btn, index) => {
+        btn.addEventListener("click", (e) => {
+            const item = e.currentTarget.closest("li");
+            const span = item.querySelector(".item-quantity");
+            span.textContent = parseInt(span.textContent) - 1;
+            if (parseInt(span.textContent) > 0) {
+                cartItem[index].quantity--;
+            }
+            sessionSubTotalUpdate(cartItem, index);
+            cartContent();
+            onPageReloadCart();
+        });
+    });
+    increaseBtns.forEach((btn, index) => {
+        btn.addEventListener("click", (e) => {
+            const item = e.currentTarget.closest("li");
+            const span = item.querySelector(".item-quantity");
+            span.textContent = parseInt(span.textContent) + 1;
+            cartItem[index].quantity++;
+            sessionSubTotalUpdate(cartItem, index);
+            cartContent();
+            onPageReloadCart(); 
+        });
+    });
+}
+function sessionSubTotalUpdate(cartItem, index) {
+    let total = parseFloat(cartItem[index].quantity) * parseFloat(cartItem[index].price);
+    cartItem[index].subTotal = total;
+    sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
+}
+
+function cartItemRemoval() {
+    let cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    const removeBtns = document.querySelectorAll(".remove-item");
+    removeBtns.forEach((btn, index) => {
+        btn.addEventListener("click", (e) => {
+            const item = e.currentTarget.closest("li");
+            const itemName = item.querySelector("h4").textContent;
+            cartItem =cartItem.filter(item => item.name !== itemName);
+            alert(`${itemName} has been removed from your cart.`);
+            sessionStorage.setItem("cartItem", JSON.stringify(cartItem));
+            cartContent();
+            onPageReloadCart();
+            displayCartCount();
+        });
+    });
+}
+
+function subTotal() {
+    const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    const subTotalElement = document.querySelector(".sub-total-span");
+    if (!subTotalElement) return;
+
+    const total = cartItem.reduce((sum, item) => sum + item.subTotal, 0);
+    subTotalElement.textContent = `${total.toFixed(2)}`;
 }

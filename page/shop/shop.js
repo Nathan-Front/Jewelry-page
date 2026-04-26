@@ -99,18 +99,22 @@ function buyNowButtons() {
             const imgSrc = item.querySelector("img");
             const summary = {article: itemName, price: item.dataset.price, source: imgSrc.src};
             sessionStorage.setItem("selectedItemImage", JSON.stringify(summary));
-            const itemDisplay = document.querySelector(".earrings-article");
-            itemDisplay.classList.add("activePopup");
+            displayItemModal(); 
             const itemCategory = e.currentTarget.dataset.item;
             renderShopItems();
             renderImage(item.dataset.article);
-            const overlay = document.querySelector(".overlay");
-            overlay.classList.add("activeOverlay");
-            const body = document.body;
-            body.classList.add("no-scroll");
+            applyOverlay();
         });
     });
-    
+}
+
+function displayItemModal() {
+    const itemDisplay = document.querySelector(".modal-article");
+    itemDisplay.classList.add("activePopup");
+}
+function hideItemModal() {
+    const itemDisplay = document.querySelector(".modal-article");
+    itemDisplay.classList.remove("activePopup");
 }
 
 function displayCart() {
@@ -118,19 +122,14 @@ function displayCart() {
     cartBtn.addEventListener("click", () => {
         const cartDialog = document.querySelector(".cart-container");
         cartDialog.classList.add("cart-container-active");
-        const overlay = document.querySelector(".overlay");
-        overlay.classList.add("activeOverlay");
-        const body = document.body;
-        body.classList.add("no-scroll");
+        applyOverlay();
     });
 
     const closeCartBtn = document.getElementById("close-cart");
     closeCartBtn.addEventListener("click", () => {
         const cartDialog = document.querySelector(".cart-container");
         cartDialog.classList.remove("cart-container-active");
-        const overlay = document.querySelector(".overlay");
-        overlay.classList.remove("activeOverlay");
-        const body = document.body;
-        body.classList.remove("no-scroll");
+        removeOverlay();
+        sessionStorage.removeItem("selectedItemImage");
     });
 }

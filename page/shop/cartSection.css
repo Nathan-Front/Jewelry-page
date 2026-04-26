@@ -1,17 +1,37 @@
-.float-cart {
-    width: 100%;
-    display: block;
-    border: none;
-    background-color: transparent;
-    position: relative;
-}
-.float-cart> button {
-    position: fixed;
-    top: 10%;
-    right: 0;
+.float-cart { 
+    position: fixed; 
+    top: 9%;
+    right: 3px;
+    left: auto;
     width: 50px;
     height: 50px;
+    display: block;
+    margin: 0;
     border-radius: 50%;
+}
+.float-cart > button {
+    width: 100%;
+    height: 100%;
+    border: 1.5px solid #C9A14A;
+    color: #C9A14A;
+    background: #FFF;
+    border-radius: 50%;
+}
+.float-cart > button:hover {
+    transform: unset;
+}
+.float-cart > button> img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+#cart-count {
+    position: absolute;
+    top: 60%;
+    left: -5%;
     background-color: white;
-    border: 1px black solid;
+    color: #C9A14A;
+    font-weight: bolder;
+    padding: 1px 4px;
+    border-radius: 50%;
 }
