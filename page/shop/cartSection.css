@@ -35,3 +35,9 @@
     padding: 1px 4px;
     border-radius: 50%;
 }
+@media only screen and (max-width: 599px) {
+    .float-cart {
+        top: 5%;
+        right: 3px;
+    }
+}

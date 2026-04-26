@@ -1,0 +1,208 @@
+<section class="summary-section">
+  <div class="form-summary-wrap">
+    <form action="" class="checkout-form">
+      <h2>Please fill necessary information</h2>
+      <label for="name">First Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="First name"
+        required
+      />
+      <label for="last-name">Last Name:</label>
+      <input
+        type="text"
+        id="last-name"
+        name="last-name"
+        placeholder="Last name"
+        required
+      />
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="Email"
+        required
+      />
+      <label for="contact">Contact:</label>
+      <input
+        type="email"
+        id="contact"
+        name="contact"
+        placeholder="Contact number"
+        required
+      />
+      <label for="country-dropdown">Select Country</label>
+      <select id="country-dropdown">
+        <option>Loading countries...</option>
+      </select>
+      <label for="zip">Zip Code:</label>
+      <input type="text" id="zip" name="zip" placeholder="Zip code" required />
+
+      <label for="address">Address 1:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        placeholder="Address 1 (State, city, block/street, building #, etc.)"
+        required
+      />
+      <label for="address2">Address 2:</label>
+      <input
+        type="text"
+        id="address2"
+        name="address2"
+        placeholder="Address 2 (optional)"
+      />
+      <button type="submit">Complete Purchase</button>
+    </form>
+    <div class="summary-header">
+      <h2>Checkout Summary</h2>
+      <div class="display-summary">
+        <div>Article</div>
+        <div>Item</div>
+        <div>Price</div>
+        <div>Quantity</div>
+        <div>Sub Total</div>
+        <ul id="cart-items-summary">
+          <!-- Cart items will be populated here -->
+        </ul>
+      </div>
+
+      <p class="tax">Tax: <span id="tax-amount">10%</span></p>
+      <p class="total">Total: $<span id="total-price-summary">0.00</span></p>
+      <div class="payment-methods">
+        <p>We accept:</p>
+        <ul>
+          <li>
+            <img
+              src="./images/shop/payment/mastercard-full-svgrepo-com.svg"
+              alt="mastercard"
+            />
+          </li>
+          <li>
+            <img
+              src="./images/shop/payment/visa-4-logo-svgrepo-com.svg"
+              alt="visa"
+            />
+          </li>
+          <li>
+            <img
+              src="./images/shop/payment/paypal-svgrepo-com.svg"
+              alt="paypal"
+            />
+          </li>
+          <li>
+            <img
+              src="./images/shop/payment/amazon-pay-svgrepo-com.svg"
+              alt="amazonpay"
+            />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="refund-policy-main-wrap">
+    <div class="refund-policy-wrap">
+      <p class="title-policy">Return & Refund Policy</p>
+      <p>
+        At LUMINOSUS, we want you to feel confident in every piece you purchase.
+        If something isn’t quite right, we’re here to help.
+      </p>
+      <p class="title-sub-policy">Returns Eligibility</p>
+      <ul>
+        <li><p>You may request a return within 14 days of delivery if:</p></li>
+        <li><p>The item is unused and unworn</p></li>
+        <li><p>It is in its original condition and packaging</p></li>
+        <li>
+          <p>You have proof of purchase (order confirmation or receipt)</p>
+        </li>
+      </ul>
+      <p class="title-sub-policy">Non-Returnable Items</p>
+      <ul>
+        <li>
+          <p>
+            For hygiene and customization reasons, the following items are not
+            eligible for return:
+          </p>
+        </li>
+        <li><p>Earrings (for pierced ears)</p></li>
+        <li><p>Customized or engraved jewelry</p></li>
+        <li>
+          <p>Final sale or clearance items</p>
+        </li>
+      </ul>
+      <p class="title-sub-policy">Exchanges</p>
+      <ul>
+        <li><p>We currently offer exchanges for:</p></li>
+        <li><p>Defective or damaged items</p></li>
+        <li><p>Incorrect items received</p></li>
+        <li>
+          <p>
+            If you need a different size or style, we recommend placing a new
+            order and returning the original item.
+          </p>
+        </li>
+      </ul>
+      <p>
+        For more details, please read our
+        <a href="/refund-policy">Return & Refund Policy</a>
+      </p>
+      <!-- <p class="title-sub-policy">Return Process</p>
+      <ul>
+        <li>
+          <p>
+            Contact us at
+            <a href="mailto:support@luminosus.com">support@luminosus.com</a>
+            within 14 days of receiving your order
+          </p>
+        </li>
+        <li><p>Provide your order number and reason for return</p></li>
+        <li><p>Once approved, we will send return instructions</p></li>
+        <li>
+          <p>Ship the item back using a trackable shipping method</p>
+        </li>
+      </ul>
+      <p class="title-sub-policy">Refunds</p>
+      <ul>
+        <li>
+          <p>
+            Refunds are processed within 5–10 business days after we receive and
+            inspect the item
+          </p>
+        </li>
+        <li><p>Refunds will be issued to your original payment method</p></li>
+        <li><p>Original shipping fees are non-refundable</p></li>
+      </ul>
+      <p class="title-sub-policy">Return Shipping</p>
+      <ul>
+        <li>
+          <p>
+            Customers are responsible for return shipping costs unless the item
+            is defective or incorrect
+          </p>
+        </li>
+        <li>
+          <p>
+            We recommend using insured and trackable shipping, as we are not
+            responsible for lost returns
+          </p>
+        </li>
+      </ul>
+      <p class="title-sub-policy">Damaged or Incorrect Items</p>
+      <ul>
+        <li>
+          <p>If your item arrives damaged or incorrect:</p>
+        </li>
+        <li><p>Contact us within 48 hours of delivery</p></li>
+        <li><p>Include photos of the item and packaging</p></li>
+        <li><p>We will resolve the issue as quickly as possible.</p></li>
+      </ul>
+      <p class="title-sub-policy">Need Help?</p>
+      <p>If you have any questions, feel free to reach out:</p>
+      <a href="mailto:support@luminosus.com">support@luminosus.com</a>-->
+    </div>
+  </div>
+</section>

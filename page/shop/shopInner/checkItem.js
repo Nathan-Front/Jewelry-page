@@ -276,6 +276,7 @@ function cartItemRemoval() {
             cartContent();
             onPageReloadCart();
             displayCartCount();
+            checkoutSumary();
         });
     });
 }
@@ -288,3 +289,68 @@ function subTotal() {
     const total = cartItem.reduce((sum, item) => sum + item.subTotal, 0);
     subTotalElement.textContent = `${total.toFixed(2)}`;
 }
+
+function checkout() {
+    const checkoutBtn = document.getElementById("to-checkout");
+    checkoutBtn.addEventListener("click", () => {
+        window.location.href = "/checkout.html";
+    });
+}
+
+function checkoutSumary() {
+    const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+        const orderSummary = document.querySelector("#cart-items-summary");
+        if (!orderSummary) return;
+        orderSummary.innerHTML = "";
+        cartItem.forEach(item => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                <img src="${item.image}" alt="${item.name}" />
+                <p>${item.name}</p>
+                <p>$${item.price}</p>
+                <p>${item.quantity}</p>
+                <p>$${item.subTotal.toFixed(2)}</p>
+            `;
+            orderSummary.appendChild(li);
+            const totalElement = document.querySelector("#total-price-summary");
+            let total = cartItem.reduce((sum, item) => sum + item.subTotal, 0) * 0.10;
+            let grandTotal = cartItem.reduce((sum, item) => sum + item.subTotal, 0) + total;
+            totalElement.textContent = `${grandTotal.toFixed(2)}`;
+        });
+}
+
+async function loadCountries() {
+    const dropdown = document.getElementById('country-dropdown');
+    if (!dropdown) return;
+    try {
+        // Adding a timeout to the fetch so it doesn't hang forever
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+        const response = await fetch('https://restcountries.com/v3.1/all?fields=name,cca2', { signal: controller.signal });
+        if (!response.ok) throw new Error('Network response was not ok');
+        const countries = await response.json();
+        clearTimeout(timeoutId);
+        // Sort alphabetically
+        countries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+        dropdown.innerHTML = '<option value="" selected disabled>Select a country</option>';
+        countries.forEach(country => {
+            const option = document.createElement('option');
+            option.value = country.cca2;
+            option.textContent = country.name.common;
+            dropdown.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error('Error fetching countries:', error);
+        // Fallback: If API is down, show a few major countries manually
+        dropdown.innerHTML = `
+            <option value="" selected disabled>Select a country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="OTHER">Other (API Offline)</option>
+        `;
+    }
+}
+

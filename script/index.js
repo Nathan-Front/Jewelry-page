@@ -41,7 +41,7 @@ async function fetchHTML() {
             fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
-            //Smooth scroll to section if URL has a hash
+        //Smooth scroll for section URLs with a hash
         if (window.location.hash) {
             const targetId = window.location.hash.substring(1); //this remove the '#'
             const targetElement = document.getElementById(targetId);
@@ -59,6 +59,22 @@ async function fetchHTML() {
         addToCart();
         cartContent();
         onPageReloadCart();
+        checkout();
+    }
+    if (page === "summary") {
+        const section = await Promise.all([
+            fetch("./page/shop/shopInner/summary.html").then(res => res.text()),
+            fetch("./page/shop/cartSection.html").then(res => res.text()),
+            fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
+        ])
+        section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+        checkoutSumary();
+        loadCountries();
+        displayCart();
+        cartContent();
+        cartContent();
+        onPageReloadCart();
+        checkout();
     }
     if (page === "about") {
         const section = await Promise.all([

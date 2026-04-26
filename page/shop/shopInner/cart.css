@@ -11,9 +11,15 @@
     opacity: 0;
     transition: 0.4s ease-in;
     transform: translateX(100%); 
-    z-index: 999;
+    z-index: 99;
     border: none;
     background-color: #F7F5F2;
+}
+@media only screen and (max-width: 599px) {
+    .cart-container {
+        width: 100%;
+        padding-bottom: 50px;
+    }
 }
 .cart-container-active {
     transform: translateX(0) !important; 
@@ -133,17 +139,17 @@
 .payment-methods {
     display: flex;
     align-items: center;
-    margin-top: 1rem;
+    margin: 1rem 0 0 auto;
 }
 .payment-methods> p {
     margin: 0 0 0 0;
 }
-.lower-portion> div> ul {
+.payment-methods> ul {
     display: flex;
     margin: 0;
     padding: 0;
     gap: 1rem;
 }
-.lower-portion> div> ul> li> img {
+.payment-methods> ul> li> img {
     width: clamp(20px, 2.5vw, 80px);
 }

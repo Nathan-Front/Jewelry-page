@@ -10,6 +10,7 @@
         left: 0;
         background-color: #F9F7F2;
         padding: 3px 0;
+        z-index: 99999;
     }
     .mobile-navigation-wrap> ul {
         width: 100%;
