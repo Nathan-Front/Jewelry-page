@@ -56,7 +56,11 @@
         name="address2"
         placeholder="Address 2 (optional)"
       />
-      <button type="submit">Complete Purchase</button>
+
+      <button type="submit" id="submit-order">
+        <span id="order-submit-loader" class="spinner hidden"></span>
+        <span id="order-btn-text">Send Order</span>
+      </button>
     </form>
     <div class="summary-header">
       <h2>Checkout Summary</h2>

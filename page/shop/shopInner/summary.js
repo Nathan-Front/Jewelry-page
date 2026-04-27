@@ -8,7 +8,8 @@ async function checkoutOrder() {
     const zip = document.getElementById("zip");
     const address = document.getElementById("address");
     const address2 = document.getElementById("address2");
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxA68yWJqbZrQBpJWReBPGORY1MKjwpEvSvj1MpKTUBflyMSZ1fp6ZzUdoQhDXS-afW/exec";
+    const grandTotal = document.getElementById("total-price-summary");
+    const scriptURL = "https://script.google.com/macros/s/AKfycbw5uyj2PTZWIRjOYrUTlkvtKk4-sURqA_nVhmmMVlSdWXiUvaLoOZyNgn-iE4VHimqH/exec";
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         validateEmail(emailInput.value);
@@ -29,25 +30,42 @@ async function checkoutOrder() {
         const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
         const merge = {
             ...data,
-            date: new Date().toISOString(),
+            date: new Date().toLocaleDateString(),
             item: cartItem.map(i => i.name).join(", "),
             price: cartItem.map(i => i.price).join(", "),
             quantity: cartItem.map(i => i.quantity).join(", "),
             image: cartItem.map(i => i.image).join(", "),
             subTotal: cartItem.map(i => i.subTotal).join(", "),
-            grandTotal: cartItem.reduce((sum, i) => sum + (i.price * i.quantity), 0)
+            grandTotal: grandTotal.textContent
         };
-          try {
-            const res = await fetch(scriptURL, {
-    method: "POST",
-    mode: 'no-cors',
-    body: JSON.stringify(merge)
-});
+        const submitBtn = form.querySelector(`button[type="submit"]`)
+        const loader = document.getElementById("order-submit-loader");
+        const orderBtnTxt = document.getElementById("order-btn-text");
+        loader.classList.remove("hidden");
+        orderBtnTxt.textContent = "Processing please wait.";
+        submitBtn.disabled = true;
 
-const result = await res.text();
+        try {
+            const res = await fetch(scriptURL, {
+                method: "POST",
+                body: JSON.stringify(merge)
+            });
+            const result = await res.text();
             alert("Your order has been placed successfully!");
+            firstName.value = "";
+            lastName.value = "";
+            emailInput.value = "";
+            contact.value = "";
+            country.value = "";
+            zip.value = "";
+            address.value = "";
+            address2.value = "";
         } catch (error) {
             alert("An error occurred. Please try again later.");
+        } finally {
+            loader.classList.add("hidden");
+            orderBtnTxt.textContent = "Send Order";
+            submitBtn.disabled = false;
         }
     });
 }

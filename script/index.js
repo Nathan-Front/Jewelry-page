@@ -69,7 +69,7 @@ async function fetchHTML() {
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
         checkoutOrder();
-        
+        checkoutSummary();
         loadCountries();
         displayCart();
         cartContent();
