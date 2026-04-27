@@ -1,12 +1,12 @@
 <section class="summary-section">
   <div class="form-summary-wrap">
-    <form action="" class="checkout-form">
+    <form action="" class="checkout-form" id="checkout-form">
       <h2>Please fill necessary information</h2>
-      <label for="name">First Name:</label>
+      <label for="first-name">First Name:</label>
       <input
         type="text"
-        id="name"
-        name="name"
+        id="first-name"
+        name="first-name"
         placeholder="First name"
         required
       />
@@ -28,14 +28,14 @@
       />
       <label for="contact">Contact:</label>
       <input
-        type="email"
+        type="text"
         id="contact"
         name="contact"
         placeholder="Contact number"
         required
       />
       <label for="country-dropdown">Select Country</label>
-      <select id="country-dropdown">
+      <select id="country-dropdown" required>
         <option>Loading countries...</option>
       </select>
       <label for="zip">Zip Code:</label>

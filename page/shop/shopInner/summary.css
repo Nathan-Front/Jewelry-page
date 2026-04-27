@@ -92,6 +92,10 @@
     font-size: clamp(1.2rem, 2vw, 2rem);
     color: #1A1A1A;
 }
+.input-error {
+  border: 1px solid red;
+  border-radius: 0.25em;
+}
 @media only screen and (max-width: 599px) {
     .form-summary-wrap {
         display: grid;

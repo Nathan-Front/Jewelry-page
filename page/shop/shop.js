@@ -93,7 +93,7 @@ function buyNowButtons() {
     const buyNowBtns = document.querySelectorAll(".buy-now-btn");
     buyNowBtns.forEach((btn, index) => {
         btn.addEventListener("click", (e) => {
-            const imageSelectedStorage = JSON.parse(sessionStorage.getItem("selectedItemImage")) || [];
+            const imageSelectedStorage = JSON.parse(sessionStorage.getItem("selectedItemImage")) || {};
             const item = e.currentTarget.closest("li");
             const itemName = item.querySelector("h4").textContent
             const imgSrc = item.querySelector("img");
@@ -101,7 +101,7 @@ function buyNowButtons() {
             sessionStorage.setItem("selectedItemImage", JSON.stringify(summary));
             displayItemModal(); 
             const itemCategory = e.currentTarget.dataset.item;
-            renderShopItems();
+            renderShopItems(summary);
             renderImage(item.dataset.article);
             applyOverlay();
         });

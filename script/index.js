@@ -68,13 +68,14 @@ async function fetchHTML() {
             fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
-        checkoutSumary();
+        checkoutOrder();
+        
         loadCountries();
         displayCart();
         cartContent();
-        cartContent();
         onPageReloadCart();
-        checkout();
+        checkout();  
+
     }
     if (page === "about") {
         const section = await Promise.all([

@@ -1,7 +1,7 @@
-async function renderShopItems() {
+async function renderShopItems(data) {
     const mainImg = document.getElementById("main-image-display");
-    const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
-    if (!data) return;
+    //const data = JSON.parse(sessionStorage.getItem("selectedItemImage"));
+    //if (!data) return;
     mainImg.src = data.source;
     closeItemDisplay();
     renderImage();
@@ -11,15 +11,24 @@ async function renderShopItems() {
 
 async function addToCart() {
     const addToCartBtn = document.getElementById("add-to-cart-btn");
-    const cart = JSON.parse(sessionStorage.getItem("cartItem")) || [];
+    
     addToCartBtn.addEventListener("click", () => {
+        const cart = JSON.parse(sessionStorage.getItem("cartItem")) || [];
         const imageSelectedStorage = JSON.parse(sessionStorage.getItem("selectedItemImage")) || {};
         const articleName = document.querySelector(".article-name").textContent;
         const articlePrice = document.querySelector(".article-price").textContent;
         const itemCount = document.querySelector("#item-count").textContent;
+        const itemExist = cart.find(item => item.name === articleName);
+        if (itemExist) {
+            alert("Same item is already in your cart.");
+            hideItemModal();
+            removeOverlay();
+            sessionStorage.removeItem("selectedItemImage");
+            return;
+        } 
         const cartItem = {
             name: articleName,
-            image: imageSelectedStorage.source,
+            image: imageSelectedStorage.source || "",
             price: articlePrice.replace("$", ""),
             quantity: parseInt(itemCount),
             subTotal: parseFloat(articlePrice.replace("$", "")) * parseInt(itemCount)
@@ -31,9 +40,8 @@ async function addToCart() {
         removeOverlay();
         displayCartCount();
         cartContent();
-        sessionStorage.removeItem("selectedItemImage");
-    }); 
-    
+        sessionStorage.removeItem("selectedItemImage"); 
+    });  
 }
 
 function displayCartCount() {
@@ -53,7 +61,7 @@ async function closeItemDisplay() {
     cancelBtn.addEventListener("click", () => {
         hideItemModal();
         sessionStorage.removeItem("selectedItemImage");
-        sessionStorage.removeItem("cartItem");
+        //sessionStorage.removeItem("cartItem");
         listImg.innerHTML = "";
         removeOverlay();
     });
@@ -142,6 +150,7 @@ async function renderImage(itemCategory) {
     }
 
     const listImg = document.getElementById("popup-list-img");
+    listImg.innerHTML = "";
     imgSources.forEach((source) => {
         const li = document.createElement("li");
         const button = document.createElement("button");
@@ -276,7 +285,7 @@ function cartItemRemoval() {
             cartContent();
             onPageReloadCart();
             displayCartCount();
-            checkoutSumary();
+            checkoutSummary();
         });
     });
 }
@@ -293,11 +302,11 @@ function subTotal() {
 function checkout() {
     const checkoutBtn = document.getElementById("to-checkout");
     checkoutBtn.addEventListener("click", () => {
-        window.location.href = "/checkout.html";
+        window.location.href = "checkout.html";
     });
 }
 
-function checkoutSumary() {
+function checkoutSummary() {
     const cartItem = JSON.parse(sessionStorage.getItem("cartItem")) || [];
         const orderSummary = document.querySelector("#cart-items-summary");
         if (!orderSummary) return;
