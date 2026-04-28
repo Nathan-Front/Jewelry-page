@@ -1,6 +1,7 @@
 .about-first-section {
     width: 100%;
     display: flex;
+    padding-top: 30px;
 }
 .about-first-section> article {
     flex: 1;
