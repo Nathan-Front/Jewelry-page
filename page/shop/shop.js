@@ -1,11 +1,9 @@
 function filterCategory() {
     const radios = document.querySelectorAll('input[name="category"]');
     const sections = document.querySelectorAll(".shop-item-section");
-
     radios.forEach((radio) => {
         radio.addEventListener("change", (e) => {
             const selectedCategory = e.target.value;
-
             sections.forEach((section) => {
                 if (selectedCategory === "all-section" || section.id === selectedCategory) {
                     section.style.display = "block";
@@ -17,10 +15,9 @@ function filterCategory() {
     });
 }
 
-function sortByPrice() {
+function sortItemCategory() {
     const sortItem = document.querySelectorAll(".filter-buttons");
     const allSection = document.querySelectorAll(".shop-item-section");
-    
     const originalOrder = new Map();
     allSection.forEach((section) => {
         const listWrap = section.querySelector(".item-list-wrap");
@@ -123,8 +120,9 @@ function displayCart() {
         const cartDialog = document.querySelector(".cart-container");
         cartDialog.classList.add("cart-container-active");
         applyOverlay();
-    });
-
+    });   
+}
+function hideCart() {
     const closeCartBtn = document.getElementById("close-cart");
     closeCartBtn.addEventListener("click", () => {
         const cartDialog = document.querySelector(".cart-container");
@@ -132,4 +130,21 @@ function displayCart() {
         removeOverlay();
         sessionStorage.removeItem("selectedItemImage");
     });
+}
+function noClickHideCart() {
+    const cartDialog = document.querySelector(".cart-container");
+    cartDialog.classList.remove("cart-container-active");
+}
+
+function applyOverlay() {
+    const overlay = document.querySelector(".overlay");
+    overlay.classList.add("activeOverlay");
+    const body = document.body;
+    body.classList.add("no-scroll");
+}
+function removeOverlay() {
+    const overlay = document.querySelector(".overlay");
+    overlay.classList.remove("activeOverlay");
+    const body = document.body;
+    body.classList.remove("no-scroll");
 }

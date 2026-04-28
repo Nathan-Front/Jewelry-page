@@ -50,22 +50,23 @@ async function checkoutOrder() {
                 method: "POST",
                 body: JSON.stringify(merge)
             });
+            if (!res.ok) throw new error("Request Failed"); //checks internet/server response status >= 200 and < 300
             const result = await res.text();
+            if (result !== "Success") throw new Error("Apps Script failed"); //checks the Apps Script returned expected success result
             alert("Your order has been placed successfully!");
-            firstName.value = "";
-            lastName.value = "";
-            emailInput.value = "";
-            contact.value = "";
-            country.value = "";
-            zip.value = "";
-            address.value = "";
-            address2.value = "";
+            form.reset()
+            emailInput.classList.remove("input-error");
+            sessionStorage.removeItem("cartItem");
+            window.location.href = "shop.html";
+            displayCartCount();
+            cartContent();
         } catch (error) {
             alert("An error occurred. Please try again later.");
         } finally {
             loader.classList.add("hidden");
             orderBtnTxt.textContent = "Send Order";
             submitBtn.disabled = false;
+            
         }
     });
 }

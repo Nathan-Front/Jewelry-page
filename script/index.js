@@ -53,9 +53,10 @@ async function fetchHTML() {
             }
         }
         filterCategory();
-        sortByPrice();
+        sortItemCategory();
         buyNowButtons();
         displayCart();
+        hideCart();
         addToCart();
         cartContent();
         onPageReloadCart();
@@ -72,6 +73,7 @@ async function fetchHTML() {
         checkoutSummary();
         loadCountries();
         displayCart();
+        hideCart();
         cartContent();
         onPageReloadCart();
         checkout();  
