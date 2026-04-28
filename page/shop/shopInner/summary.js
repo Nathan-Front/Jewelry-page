@@ -9,7 +9,7 @@ async function checkoutOrder() {
     const address = document.getElementById("address");
     const address2 = document.getElementById("address2");
     const grandTotal = document.getElementById("total-price-summary");
-    const scriptURL = "https://script.google.com/macros/s/AKfycbw5uyj2PTZWIRjOYrUTlkvtKk4-sURqA_nVhmmMVlSdWXiUvaLoOZyNgn-iE4VHimqH/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwrqag14qz_02_vJlqTFKuwIJCswRLAi9xHj_OyggG9ID25WB81wYExSGtgCbR-RCAk/exec";
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         validateEmail(emailInput.value);
@@ -50,10 +50,10 @@ async function checkoutOrder() {
                 method: "POST",
                 body: JSON.stringify(merge)
             });
-            if (!res.ok) throw new error("Request Failed"); //checks internet/server response status >= 200 and < 300
-            const result = await res.text();
-            if (result !== "Success") throw new Error("Apps Script failed"); //checks the Apps Script returned expected success result
-            alert("Your order has been placed successfully!");
+            if (!res.ok) throw new Error("Request Failed"); //checks internet/server response status >= 200 and < 300
+            const result = await res.json();
+            if (!result.success) throw new Error("Apps Script failed"); //checks the Apps Script returned expected success result
+            alert(`Order placed successfully!\nOrder ID: ${result.orderId}`);
             form.reset()
             emailInput.classList.remove("input-error");
             sessionStorage.removeItem("cartItem");
