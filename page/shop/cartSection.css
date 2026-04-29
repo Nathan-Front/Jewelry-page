@@ -26,6 +26,7 @@
     height: 100%;
     border-radius: 50%;
 }
+/*
 #cart-count {
     position: absolute;
     top: 60%;
@@ -35,7 +36,7 @@
     font-weight: bolder;
     padding: 1px 4px;
     border-radius: 50%;
-}
+}*/
 @media only screen and (max-width: 599px) {
     .float-cart {
         top: 5%;

@@ -18,6 +18,8 @@
 .contact-second-section> div> h3 {
     margin: 0 0 2rem 0;
     font-size: clamp(1.5rem, 3vw, 3rem);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.5px;
 }
 .contact-second-section> div> ul {
     margin: 0;

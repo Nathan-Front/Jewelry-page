@@ -5,11 +5,13 @@ async function fetchHTML() {
     const [
         nav,
         foot,
-        mobileNav
+        mobileNav,
+        cart
     ] = await Promise.all([
         fetch("./components/navigation/navigation.html").then(res => res.text()),
         fetch("./components/footer/footer.html").then(res => res.text()),
         fetch("./components/navigation/mobileNav.html").then(res => res.text()),
+        fetch("./components/cart/cart.html").then(res => res.text()),
     ])
 
     app.insertAdjacentHTML("beforeend", nav);
@@ -47,11 +49,9 @@ async function fetchHTML() {
             filterCategory();
             sortItemCategory();
             buyNowButtons();
-            displayCart();
-            hideCart();
-            cartContent();
-            onPageReloadCart();
-            checkout();
+            //displayCart();
+            //hideCart();
+            
         }
         //Smooth scroll for section URLs with a hash
         if (window.location.hash) {
@@ -77,8 +77,8 @@ async function fetchHTML() {
             fetch("./page/shop/shopNinthSection.html").then(res => res.text()),*/
             fetch("./page/shop/shopFirstSection.html").then(res => res.text()),
             fetch("./page/shop/shopInner/checkItem.html").then(res => res.text()),
-            fetch("./page/shop/cartSection.html").then(res => res.text()),
-            fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
+            //fetch("./page/shop/cartSection.html").then(res => res.text()),
+            
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
 
@@ -114,18 +114,14 @@ async function fetchHTML() {
     if (page === "summary") {
         const section = await Promise.all([
             fetch("./page/shop/shopInner/summary.html").then(res => res.text()),
-            fetch("./page/shop/cartSection.html").then(res => res.text()),
-            fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
+            //fetch("./page/shop/cartSection.html").then(res => res.text()),
+            //fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
         checkoutOrder();
         checkoutSummary();
         loadCountries();
-        displayCart();
-        hideCart();
-        cartContent();
-        onPageReloadCart();
-        checkout();  
+          
 
     }
     if (page === "about") {
@@ -155,7 +151,15 @@ async function fetchHTML() {
     }
     app.insertAdjacentHTML("beforeend", foot);
     app.insertAdjacentHTML("beforeend", mobileNav);
+    app.insertAdjacentHTML("beforeend", cart);
     subscribe();
+    cartContent();
+    onPageReloadCart();
+    checkout();
+    displayCart();
+    hideCart();
+
+
 
 }
 

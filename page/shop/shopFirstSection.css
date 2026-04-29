@@ -9,6 +9,8 @@
 .shop-first-section> h2 {
     font-size: clamp(1.5rem, 4vw, 5rem);
     text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.5px;
 }
 .shop-first-section> div {
     width: 90%;
