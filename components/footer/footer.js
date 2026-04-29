@@ -1,5 +1,5 @@
 function subscribe() {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxYFem8jewuv1ApcRQfBYPDYQIaZePy6WA_8icUmQll-FLd_ukD61-OrX7m5sS_D5eR/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwm8k3mSFHtNzcpodXp6UQWqXAbt4oypaxsEHwLsO8UkXvrcCBYqKuXjRTThLTvLqtW/exec";
     const form = document.getElementById("subscribe-form");
     if (!form) {
         return; 

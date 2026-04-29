@@ -47,6 +47,7 @@ function customerMessage() {
             userMail.value = "";
             userContact.value = "";
             userMessage.value = "";
+            userMail.classList.remove("input-error");
         } catch (error) {
             alert("An error occurred. Please try again later.");
         }

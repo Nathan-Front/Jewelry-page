@@ -1,5 +1,6 @@
 function filterCategory() {
     const radios = document.querySelectorAll('input[name="category"]');
+    const div = document.querySelector(".lazy-section");
     const sections = document.querySelectorAll(".shop-item-section");
     radios.forEach((radio) => {
         radio.addEventListener("change", (e) => {

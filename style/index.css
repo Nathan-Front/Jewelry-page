@@ -25,7 +25,7 @@ button:hover {
     cursor: pointer;
     transform: translateY(-1px);
 }
-p {
+p, li {
     font-size: clamp(0.9rem, 1.3vw, 1.5rem);
 }
 

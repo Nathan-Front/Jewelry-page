@@ -12,6 +12,13 @@ async function checkoutOrder() {
     const scriptURL = "https://script.google.com/macros/s/AKfycbwrqag14qz_02_vJlqTFKuwIJCswRLAi9xHj_OyggG9ID25WB81wYExSGtgCbR-RCAk/exec";
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        //Select the honeypot value
+        const honey = form.querySelector('input[name="_honey"]').value;
+        //If 'honey' is NOT empty, it's a bot!
+        if (honey) {
+            console.log("Bot submission detected.");
+            return; 
+        }
         validateEmail(emailInput.value);
         if (!validateEmail(emailInput.value)) {
             emailInput.classList.add("input-error");
