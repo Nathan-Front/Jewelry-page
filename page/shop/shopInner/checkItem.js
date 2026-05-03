@@ -330,6 +330,9 @@ function checkoutSummary() {
             `;
             orderSummary.appendChild(li);
         });
+        const subTotalElement = document.querySelector("#sub-total-price-summary");
+        let sub_total = cartItem.reduce((sum, item) => sum + item.subTotal, 0)
+        subTotalElement.textContent = sub_total;
         const totalElement = document.querySelector("#total-price-summary");
         let total = cartItem.reduce((sum, item) => sum + item.subTotal, 0) * 0.10;
         let grandTotal = cartItem.reduce((sum, item) => sum + item.subTotal, 0) + total;

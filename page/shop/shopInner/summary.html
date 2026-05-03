@@ -1,7 +1,7 @@
 <section class="summary-section">
   <div class="form-summary-wrap">
     <form action="" class="checkout-form" id="checkout-form">
-      <h2>Please fill necessary information</h2>
+      <p class="container-title">Billing Info:</p>
       <!--<label for="first-name">First Name:</label>
       <input
         type="text"
@@ -63,6 +63,8 @@
         tabindex="-1"
         autocomplete="off"
       />
+      <div class="divider"></div>
+      <p class="container-title payment-method-title">Payment Method:</p>
       <div class="paypal-container" id="paypal-button-container"></div>
       <p id="result-message"></p>
 
@@ -73,7 +75,7 @@
       >-->
     </form>
     <div class="summary-header">
-      <h2>Checkout Summary</h2>
+      <p class="container-title">Checkout Summary:</p>
       <div class="display-summary">
         <div>Article</div>
         <div>Item</div>
@@ -84,9 +86,15 @@
           <!-- Cart items will be populated here -->
         </ul>
       </div>
+      <div class="payment-summary-card">
+        <p>Sub Total: $<span id="sub-total-price-summary">0</span></p>
+        <p class="shipping-fee">
+          Shipping Fee: <span id="shippingFee">free</span>
+        </p>
+        <p class="tax">Tax: <span id="tax-amount">10%</span></p>
+        <p class="total">Total: $<span id="total-price-summary">0.00</span></p>
+      </div>
 
-      <p class="tax">Tax: <span id="tax-amount">10%</span></p>
-      <p class="total">Total: $<span id="total-price-summary">0.00</span></p>
       <div class="payment-methods">
         <p>We accept:</p>
         <ul>

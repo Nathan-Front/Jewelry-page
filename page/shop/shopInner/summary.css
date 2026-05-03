@@ -15,7 +15,7 @@
     display: flex;
     flex-direction: column;
 }
-.form-summary-wrap> form> h2 {
+.container-title {
     margin: 0 0 1.5rem 0;
     font-size: clamp(1.1rem, 2vw, 2rem);
 }
@@ -23,7 +23,8 @@
 .form-summary-wrap> form> input,
 .form-summary-wrap> form> select,
 .form-summary-wrap> form> button,
-.paypal-container {
+.paypal-container,
+.divider {
     width: 90%;
 }
 .form-summary-wrap> form> input,
@@ -33,6 +34,16 @@
     border: 1px solid #d7d7d7;
     background: #fff;
 }
+.form-summary-wrap> form> input {
+    border-radius: 10px;
+    padding: 14px;
+    border: 1px solid #ddd;
+    transition: .2s;
+}
+.form-summary-wrap> form> input:focus {
+    border-color: #c9a24d;
+    box-shadow: 0 0 0 3px rgba(201,162,77,.15);
+}
 .checkout-container {
     display: flex;
     gap: 1rem;
@@ -41,6 +52,21 @@
 .main-checkout {
     flex: 2;
 }
+.divider {
+    display: block;
+    margin-top: 10px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        rgba(201,162,77,0.55),
+        rgba(0,0,0,0.08),
+        rgba(201,162,77,0.25)
+    );
+}
+.payment-method-title {
+    margin-top: 1rem;
+}
+/*
 .card {
     background-color: #ffffff;
     border-radius: 12px;
@@ -109,8 +135,12 @@ hr {
     border-top: 1px solid #eaeaea;
     margin: 24px 0;
 }
-
-
+*/
+#paypal-button-container {
+   border-radius: 16px;
+   background: #f8f7f5;
+   box-shadow: 0 8px 18px rgba(0,0,0,.04);
+}
 .form-summary-wrap> form> button {
     padding: 5px;
     font-size: clamp(1.2rem, 1.7vw, 2rem);
@@ -127,13 +157,16 @@ hr {
     display: flex;
     flex-direction: column;
 }
-.summary-header> h2 {
-    font-size: clamp(1.5rem, 2vw, 5rem);
-    margin: 0 0 1rem 0;
+.summary-header> p:first-child {
+    margin: 0 0 1.5rem 0;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
 }
 .display-summary {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    padding: 16px;
+    border-radius: 14px;
+    background: #faf9f7;
 }
 .display-summary> div {
     font-weight: 600;
@@ -168,11 +201,28 @@ hr {
 .display-summary> ul> li> p {
     font-size: clamp(0.8rem, 1.2vw, 1.8rem);
 }
-.summary-header> p {
-    margin: 2rem 0 0 auto;
-    font-size: clamp(1.2rem, 2vw, 2rem);
+.payment-summary-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 16px;
+    border-radius: 14px;
+    background: #faf9f7;
+}
+.payment-summary-card> p {
+    margin: 5px 0 0 auto;
+    font-size: clamp(1rem, 1.5vw, 1.8rem);
     color: #1A1A1A;
 }
+.payment-summary-card> p> span {
+    font-weight: 600;
+}
+.payment-summary-card> p:last-child {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+
 .input-error {
     border: 1px solid red;
     border-radius: 0.25em;
@@ -194,7 +244,8 @@ hr {
     .form-summary-wrap> form> input,
     .form-summary-wrap> form> select,
     .form-summary-wrap> form> button,
-    .paypal-container {
+    .paypal-container,
+    .divider {
         width: 100%;
     }
     .display-summary> ul {

@@ -118,7 +118,6 @@ async function fetchHTML() {
             //fetch("./page/shop/shopInner/cart.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
-        checkoutOrder();
         checkoutSummary();
         loadCountries();
         // wait for DOM insertion to fully settle (no guessing)

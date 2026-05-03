@@ -46,7 +46,7 @@ function initPaypalButtons() {
          shape: "rect",
          layout: "vertical",
          color: "gold",
-         label: "paypal"
+         label: "paypal",
       },
       onClick: (data, actions) => {
          const contact = document.getElementById("contact").value;
