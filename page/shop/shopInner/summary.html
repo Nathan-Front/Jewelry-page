@@ -2,7 +2,7 @@
   <div class="form-summary-wrap">
     <form action="" class="checkout-form" id="checkout-form">
       <h2>Please fill necessary information</h2>
-      <label for="first-name">First Name:</label>
+      <!--<label for="first-name">First Name:</label>
       <input
         type="text"
         id="first-name"
@@ -25,7 +25,7 @@
         name="email"
         placeholder="Email"
         required
-      />
+      />-->
       <label for="contact">Contact:</label>
       <input
         type="text"
@@ -34,12 +34,12 @@
         placeholder="Contact number"
         required
       />
-      <label for="country-dropdown">Select Country</label>
+      <!--<label for="country-dropdown">Select Country</label>
       <select id="country-dropdown" required>
         <option>Loading countries...</option>
       </select>
       <label for="zip">Zip Code:</label>
-      <input type="text" id="zip" name="zip" placeholder="Zip code" required />
+      <input type="text" id="zip" name="zip" placeholder="Zip code" required />-->
 
       <label for="address">Address 1:</label>
       <input
@@ -63,37 +63,14 @@
         tabindex="-1"
         autocomplete="off"
       />
-      <div class="checkout-container">
-        <div class="card main-checkout">
-          <span class="section-title">Quick & Secure Checkout</span>
-          <div class="express-checkout">
-            <span>Express Checkout</span>
-            <button type="button" class="btn paypal-btn">
-              <img
-                src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_150x38.png"
-                alt="PayPal"
-              />
-            </button>
-            <div class="paypal-sub-options">
-              <span>venmo</span>
-              <span>Pay Later</span>
-              <span>💳 Debit/Credit</span>
-            </div>
-            <hr />
-            <button type="button" class="btn amazon-btn">
-              <img
-                src="https://m.media-amazon.com/images/G/01/AmazonPay/AmazonPayLogo_Gold_160x32._CB485934487_.png"
-                alt="amazon pay"
-              />
-            </button>
-            <p class="amazon-subtext">Use your Amazon account</p>
-          </div>
-        </div>
-      </div>
+      <div class="paypal-container" id="paypal-button-container"></div>
+      <p id="result-message"></p>
+
+      <!--
       <button type="submit" id="submit-order">
         <span id="order-submit-loader" class="spinner hidden"></span>
-        <span id="order-btn-text">Send Order</span>
-      </button>
+        <span id="order-btn-text">Send Order</span></button
+      >-->
     </form>
     <div class="summary-header">
       <h2>Checkout Summary</h2>

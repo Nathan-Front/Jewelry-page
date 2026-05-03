@@ -17,7 +17,7 @@
 }
 .logo {
     margin: 0 0 0 clamp(5px, 1vw, 15px);
-    width: clamp(3rem, 5vw, 5rem);
+    width: clamp(3rem, 6vw, 5rem);
     flex-shrink: 0;
 }
 .logo> img {
@@ -44,7 +44,8 @@
 .links> a {
     text-decoration: none;
     font-size: clamp(1.2rem, 2vw, 2.5rem);
-    color: black;
+    font-weight: 500;
+    color: #2e241d;
 }
 .links> a::after {
     content: "";
@@ -91,7 +92,7 @@
     transition: opacity 0.2s;
 }
 .nav-policy-cart-wrap> li:first-child> a> img {
-    width: 25px;
+    width: 30px;
 }
 .nav-policy-cart-wrap> li:first-child> a:hover .tooltip-box {
     opacity: 1;

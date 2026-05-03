@@ -18,11 +18,18 @@
   <body data-page="summary">
     <main id="app"></main>
     <div class="overlay"></div>
+    <script src="./page/shop/shopInner/summary.js" defer></script>
     <script src="./script/index.js" defer></script>
     <script src="./script/emailValidator.js" defer></script>
     <script src="./components/footer/footer.js" defer></script>
     <script src="./page/shop/shop.js" defer></script>
     <script src="./page/shop/shopInner/checkItem.js" defer></script>
-    <script src="./page/shop/shopInner/summary.js" defer></script>
+
+    <!-- Initialize the JS-SDK -->
+    <script
+      src="https://www.paypal.com/sdk/js?client-id=AUj4A7O4DhLh5gAbRerp5nWYXpB3TBvSGGofPQz5Y5rgfaJ-h1eZoHmPcr3zpOfEDoLyolOq7ajgre8-&buyer-country=US&currency=USD&components=buttons&enable-funding=venmo,paylater,card"
+      data-sdk-integration-source="developer-studio"
+    ></script>
+    <script src="./script/app.js" defer></script>
   </body>
 </html>

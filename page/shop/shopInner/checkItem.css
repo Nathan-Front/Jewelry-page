@@ -10,7 +10,7 @@
     padding: 2rem;
     gap: 1rem;
     overflow-y: scroll;
-    z-index: 9;
+    z-index: 9999;
     opacity: 0;
     transition: 0.4s ease-in;
 }

@@ -53,7 +53,7 @@ async function checkoutOrder() {
         //If 'honey' is NOT empty, it's a bot!
         if (honey) {
             console.log("Bot submission detected.");
-            return; 
+            return;
         }
         validateEmail(emailInput.value);
         if (!validateEmail(emailInput.value)) {
@@ -109,7 +109,39 @@ async function checkoutOrder() {
             loader.classList.add("hidden");
             orderBtnTxt.textContent = "Send Order";
             submitBtn.disabled = false;
-            
+
         }
     });
+}
+
+async function summary() {
+    const script = "https://script.google.com/macros/s/AKfycbyi50iPRPKgFo3HANPpG6ZyybdNWaeIjYeli7ZNOf6h4RgX4Z1ZLFVfDu23jpLVANCW/exec";
+    const contact = document.getElementById("contact").value;
+    const address = document.getElementById("address").value;
+    const address2 = document.getElementById("address2").value;
+    const formInput = {
+        contact: contact,
+        address1: address,
+        address2: address2
+    }
+    try {
+        const res = await fetch(script, {
+            method: "POST",
+            body: JSON.stringify(formInput)
+        });
+        if (!res.ok) throw new Error("Request Failed"); //checks internet/server response status >= 200 and < 300
+        const result = await res.json();
+        if (!result.success) throw new Error("Apps Script failed"); //checks the Apps Script returned expected success result
+
+        sessionStorage.removeItem("cartItem");
+        window.location.href = "shop.html";
+        displayCartCount();
+        cartContent();
+    } catch (error) {
+        alert("An error occurred. Please try again later.");
+    } finally {
+        contact = "";
+        address = "";
+        address2 = "";
+    }
 }

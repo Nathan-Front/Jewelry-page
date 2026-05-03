@@ -121,8 +121,12 @@ async function fetchHTML() {
         checkoutOrder();
         checkoutSummary();
         loadCountries();
-          
-
+        // wait for DOM insertion to fully settle (no guessing)
+        requestAnimationFrame(() => {
+            initCheckoutPage();
+            
+        });
+        
     }
     if (page === "about") {
         const section = await Promise.all([
