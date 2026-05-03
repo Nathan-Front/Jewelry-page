@@ -30,7 +30,6 @@
     color: #FFFFFF;
     font-size: clamp(1.5rem, 2vw, 2.5rem);
     margin-top: 1em;
-    border-radius: 0.25em;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
 }
 .home-first-section> a:hover {

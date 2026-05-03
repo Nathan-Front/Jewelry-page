@@ -34,6 +34,7 @@
     padding: 0;
     gap: 5px;
     padding: 10px;
+    border-radius: 10px;
 }
 legend {
     font-size: clamp(1.2rem, 2vw, 2rem);
@@ -80,7 +81,7 @@ legend {
     background-color: #c9a14a;
     color: #E5E4E2;
     border: none;
-    border-radius: 0.25em;
+    border-radius: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     font-size: clamp(0.4rem, 1vw, 1.5rem);
     padding: 10px 5px;

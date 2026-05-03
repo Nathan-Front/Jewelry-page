@@ -36,9 +36,8 @@
 }
 .faq-button {
     margin: 0;
-    padding: 5px 3px;
+    padding: 5px;
     font-size: clamp(1rem, 1.5vw, 2rem);
-    border-radius: 0.25em;
     border: none;
     background-color: #F9F7F2;
     font-weight: bold;

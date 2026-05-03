@@ -137,7 +137,7 @@ hr {
 }
 */
 #paypal-button-container {
-   border-radius: 16px;
+   border-radius: 10px;
    background: #f8f7f5;
    box-shadow: 0 8px 18px rgba(0,0,0,.04);
 }
