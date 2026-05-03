@@ -58,4 +58,7 @@
     .faq-list {
         width: 100%;
     }
+    .faq-button {
+        text-align: left;
+    }
 }
