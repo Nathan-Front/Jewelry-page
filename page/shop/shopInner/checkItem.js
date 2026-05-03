@@ -194,7 +194,7 @@ function cartContent() {
             <div>
                 <h4>${item.name}</h4>
                 <p>Price: ${item.price}</p>
-                <div class"cart-counter-button">
+                <div class="cart-counter-button">
                     <button class="decrease-quantity"><img src="./images/shop/cart/minus-svgrepo-com.svg" alt="plus"></button>
                     <span class="item-quantity">${item.quantity}</span>
                     <button class="increase-quantity"><img src="./images/shop/cart/plus-svgrepo-com.svg" alt="minus"></button>

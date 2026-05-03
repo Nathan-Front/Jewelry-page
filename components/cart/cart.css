@@ -90,23 +90,26 @@
 }
 .cart-counter-button {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    gap: 5px;
 }
 .increase-quantity,
 .decrease-quantity {
     Background: #F0F0F0;
     background-color: transparent;
-    width: 10%;
+    width: 35px;
+    height: 100%;
     border: 1px solid #DADADA;
+    
 }
 .increase-quantity> img,
 .decrease-quantity> img {
     width: 100%;
-    margin: auto;
     display: flex;
 }
 .item-quantity {
     padding: 0 10px;
+    
 }
 .cart-items-list> li> div> button {
     background: none;

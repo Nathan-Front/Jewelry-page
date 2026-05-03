@@ -78,8 +78,8 @@
 }
 .tooltip-box {
     position: absolute;
-    top: -210%; 
-    left: 50%;
+    top: -240%; 
+    left: 0%;
     transform: translateX(-50%);
     background-color: #333;
     color: #fff;
@@ -110,10 +110,29 @@
 .cart-button:hover {
     transform: unset;
 }
+.tooltip-cart {
+    position: absolute;
+    top: -45%; 
+    left: 0%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 10px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+.cart-button:hover .tooltip-cart {
+    opacity: 1;
+    z-index: 999;
+}
 .cart-button> img {
     width: 30px;
 }
-.cart-button> span {
+.cart-button> span:last-child {
     position: absolute;
     width: 15px;
     height: 15px;
@@ -121,7 +140,7 @@
     aspect-ratio: 1 / 1;
     padding: 5px;
     top: -5px;
-    right: 5px;
+    right: 8px;
     background-color: #C9A96E;
     color: white;
     font-weight: bold;
