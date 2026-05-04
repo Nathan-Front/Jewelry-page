@@ -155,5 +155,6 @@
     }
     .web-title> h1 {
         display: flex;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
 }

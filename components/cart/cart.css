@@ -21,6 +21,11 @@
         padding-bottom: 50px;
     }
 }
+@media (min-width: 600px) and (max-width: 768px) {
+    .cart-container {
+        width: 60%;
+    }
+}
 .cart-container-active {
     transform: translateX(0) !important; 
     opacity: 1;
@@ -143,7 +148,7 @@
     padding: 5px 0;
     font-size: clamp(1.3rem, 1.8vw, 2.5rem);
     background: linear-gradient(135deg, #D4AF37, #C9A14A);
-    color: #000;
+    color: #E5E4E2;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 .payment-methods {

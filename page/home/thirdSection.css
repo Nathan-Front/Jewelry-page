@@ -18,9 +18,11 @@
 .our-story-wrap> h3 {
     font-size: clamp(1.5rem, 3vw, 3rem);
     margin-bottom: 30px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 .our-story-wrap> p {
     margin-bottom: 20px;
+    line-height: 1.7;
 }
 .our-story-wrap> a {
     align-self: flex-start;
@@ -33,6 +35,8 @@
 }
 .our-story-wrap> a:hover {
     transform: translateY(-1px);
+    color: #C9A96E;
+    font-weight: 600;
 }
 .our-story-image-wrap {
     flex: 1;

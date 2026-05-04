@@ -113,6 +113,8 @@ function displayItemModal() {
 function hideItemModal() {
     const itemDisplay = document.querySelector(".modal-article");
     itemDisplay.classList.remove("activePopup");
+    const itemCount = document.querySelector("#item-count");
+    itemCount.textContent = "1";
 }
 
 function displayCart() {

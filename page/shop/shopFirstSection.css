@@ -10,7 +10,7 @@
 .shop-first-section> h2 {
     font-size: clamp(1.5rem, 4vw, 5rem);
     text-align: center;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     font-weight:500;
     letter-spacing:2px;
 }
@@ -39,35 +39,41 @@
 legend {
     font-size: clamp(1.2rem, 2vw, 2rem);
     padding: 0 5px;
+    text-shadow: 0 2px 10px rgba(201, 162, 77, 0.5);
 }
 .select-category> fieldset> label {
-    font-size: clamp(0.9rem, 1.3vw, 1.5rem);
+    font-size: clamp(0.6rem, 1.2vw, 1.5rem);
 }
 .select-category> fieldset> label> input {
     display: none;
 }
 .checkmark {
-  height: 18px;
-  width: 18px;
-  background-color: #ffffff; 
-  border: 2px solid #000000;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 10px;
-  cursor: pointer;
+    height: 18px;
+    width: 18px;
+    background-color: #ffffff; 
+    border: 2px solid #000000;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
 }
 .select-category> fieldset> label> input:checked + .checkmark {
-  background-color: #1E1E1E;
-  border-color: #1E1E1E;
+    background-color: #1E1E1E;
+    border-color: rgba(201,162,77,.5);
+}
+.checkmark:hover {
+    background-color: #1E1E1E;
+    border-color: rgba(201,162,77,.5);
 }
 .filter-category {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: auto auto;
     gap: 5px;
     padding: 0;
 }
 .filter-category> li {
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -78,19 +84,31 @@ legend {
     margin: 0;
 }
 .filter-category> li> button {
+    width: 100%;
     background-color: #c9a14a;
     color: #E5E4E2;
     border: none;
     border-radius: 10px;
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
-    font-size: clamp(0.4rem, 1vw, 1.5rem);
-    padding: 10px 5px;
+    font-size: clamp(0.6rem, 1vw, 1.3rem);
+    flex: 1;
+    height: clamp(20px, 10vw, 50px);
 }   
 @media only screen and (max-width: 599px) {
     .shop-first-section> div {
         flex-direction: column;
+        width: 100%;
+    }
+    .select-category> fieldset {
+        grid-template-columns: repeat(3, auto);
+    }
+    .checkmark {
+        margin-right: 5px;
+    }
+    .filter-category {
+        grid-template-columns: repeat(5, auto);
     }
     .filter-category> li> button {
-        padding: 5px 3px;
+        height: 30px;
     }
 }

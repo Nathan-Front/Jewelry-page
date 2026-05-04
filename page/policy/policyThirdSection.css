@@ -88,6 +88,10 @@
 }
 .policy-articles> p {
     margin: 0;
+    line-height: 1.7;
+}
+.policy-articles> ul> li {
+    line-height: 1.7;
 }
 .policy-list-titles {
     font-weight: 800;
