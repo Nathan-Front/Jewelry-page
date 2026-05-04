@@ -54,7 +54,7 @@
         gap: 1em;
     }
     .our-story-wrap {
-        width: 95%;
+        width: 80%;
         margin: 0 auto;
     }
     .our-story-wrap> h2 {
@@ -67,6 +67,6 @@
         margin: 0;
     }
     .our-story-image-wrap> img {
-        width: 95%;
+        width: 80%;
     }
 }

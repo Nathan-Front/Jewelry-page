@@ -1,4 +1,5 @@
 //From country API
+/*
 async function loadCountries() {
     const dropdown = document.getElementById('country-dropdown');
     if (!dropdown) return;
@@ -32,7 +33,7 @@ async function loadCountries() {
             <option value="OTHER">Other (API Offline)</option>
         `;
     }
-}
+}*/
 
 async function summary() {
     const script = "https://script.google.com/macros/s/AKfycbyi50iPRPKgFo3HANPpG6ZyybdNWaeIjYeli7ZNOf6h4RgX4Z1ZLFVfDu23jpLVANCW/exec";

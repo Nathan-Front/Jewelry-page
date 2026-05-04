@@ -31,7 +31,12 @@
         gap: 1em;
     }
     .about-second-section> img {
-        width: 90%;
+        width: 80%;
+    }
+    .about-second-section> article> h3,
+    .about-second-section> article> p {
+        width: 80%;
+        margin: 0 auto;
     }
     .about-second-section> article> h3 {
         margin-bottom: 1rem;
