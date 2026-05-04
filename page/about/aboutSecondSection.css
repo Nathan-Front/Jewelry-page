@@ -5,9 +5,10 @@
     padding: 50px 0;
 }
 .about-second-section> img {
-    width: clamp(20%, 50vw, 90%);
+    width: clamp(20%, 45vw, 90%);
     border-radius: 1.25em;
-    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 .about-second-section> article {
     flex: 1;

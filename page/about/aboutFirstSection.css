@@ -23,9 +23,10 @@
     line-height: 1.7;
 }
 .about-first-section> img {
-    width: clamp(20%, 50vw, 90%);
-   border-radius: 1.25em;
-    padding: 1rem;
+    width: clamp(20%, 45vw, 90%);
+    border-radius: 1.25em;
+    margin: 1rem;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
 }
 @media only screen and (max-width: 768px) {
     .about-first-section {
