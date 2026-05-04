@@ -62,14 +62,18 @@
     color: #C9A96E;
     font-weight: 600;
 }
-.input-error {
-  border: 1px solid red;
-  border-radius: 0.25em;
+.home-fourth-section> form> input.input-error {
+    border: 2px solid red;
 }
 @media only screen and (max-width: 599px) {
     .home-fourth-section {
         flex-direction: column;
         gap: 2em;
+    }
+    .home-fourth-section> div {
+        width: 80%;
+        margin: 0 auto;
+        align-items: flex-start;
     }
     .home-fourth-section> div> h3 {
         margin: 0 0 1rem 0;

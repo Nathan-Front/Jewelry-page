@@ -8,17 +8,16 @@ function toShopButton() {
     })
 }
 
-
 function customerMessage() {
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzPsUyYVER0EArOvD-gUo2xLnPWzkbm52mp37UPqEKbCheDTKKayV4aWlIe7aHaT5b_/exec";
-    const userName = document.getElementById("name-input");
-    const userMail = document.getElementById("mail-input");
-    const userContact = document.getElementById("contact-input");
-    const userMessage = document.getElementById("message-input");
-    
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxTuHkao0mbf-4Om6zcoUdXFpd-cY3tfYAmZ29SuEPeWUJxcmhewotR7EvdvD4SyYue/exec";
     const form = document.getElementById("form");
     form.addEventListener("submit", (e) => {
         e.preventDefault();
+        const form = e.target;
+        const userMail = form.querySelector("#mail-input");
+        const userName = form.querySelector("#name-input");
+        const userContact = form.querySelector("#contact-input");
+        const userMessage = form.querySelector("#message-input");
         //Select the honeypot value
         const honey = form.querySelector('input[name="_honey"]').value;
         //If 'honey' is NOT empty, it's a bot!
@@ -27,6 +26,7 @@ function customerMessage() {
             return; 
         }
         const validate = validateEmail(userMail.value);
+        console.log(userMail);
         if(!validate) {
             userMail.classList.add("input-error");
             return;
@@ -51,5 +51,8 @@ function customerMessage() {
         } catch (error) {
             alert("An error occurred. Please try again later.");
         }
+        userMail.addEventListener("input", () => {
+            userMail.classList.remove("input-error");
+        });
     })
 }

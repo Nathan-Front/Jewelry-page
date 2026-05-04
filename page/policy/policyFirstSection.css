@@ -27,15 +27,21 @@
     color: #5A5A5A;
     line-height: 1.7;
 }
-@media only screen and (max-width: 768px){
+@media only screen and (max-width: 599px){
     .policy-first-section {
         height: 300px;
         background-size: 100% 300px;
-  }
+    }
+    .policy-first-section> p {
+        width: 70%;
+    }
 }
 @media (min-width:600px) and (max-width: 768px) {
     .policy-first-section {
         height: 400px;
         background-size: 100% 400px;
+    }
+    .policy-first-section> p {
+        width: 70%;
     }
 }

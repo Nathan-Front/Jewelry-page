@@ -4,12 +4,13 @@ function subscribe() {
     if (!form) {
         return; 
     }
-    const emailInput = document.getElementById("subscribe-input");
     const loader = document.getElementById("loader");
     const btnText = document.getElementById("btn-text");
     const submitBtn = form.querySelector('button[type="submit"]');
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
+        const subscribeForm = e.target;
+        const emailInput = subscribeForm.querySelector("#subscribe-input");
         if (emailInput.value.trim() === "") {
             return;
         }
@@ -31,7 +32,7 @@ function subscribe() {
         }
         //Spinner and button state
         loader.classList.remove("hidden");
-        btnText.innerText = "Checking...";   
+        btnText.innerText = "Sending...";   
         submitBtn.disabled = true;
         try {
             const response = await fetch(scriptURL, {

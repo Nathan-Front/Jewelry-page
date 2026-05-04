@@ -114,9 +114,10 @@ footer {
     margin: 0;
     font-size: clamp(0.7rem, 1.2vw, 1.3rem);
 }
-.input-error {
+.footer-form-wrap> form> input.input-error {
     border: 1px solid red;
     border-radius: 0.25em;
+    border-radius: 10px;
 }
 .spinner {
     width: 14px;

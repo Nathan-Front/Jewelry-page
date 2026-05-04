@@ -7,7 +7,7 @@
 .shop-item-section> article {
     text-align: center;
 }
-.shop-item-section> article> h3 {
+.shop-item-section> article> h2 {
     font-size: clamp(1.5rem, 3vw, 5rem);
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }

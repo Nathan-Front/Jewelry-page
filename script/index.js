@@ -142,6 +142,7 @@ async function fetchHTML() {
             fetch("./page/contact/contactThirdSection.html").then(res => res.text()),
         ])
         section.forEach(sec => app.insertAdjacentHTML("beforeend", sec));
+        customerMessage();
         FAQ();
     }
     if (page === "policy") {

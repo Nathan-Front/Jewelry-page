@@ -7,12 +7,18 @@
 }
 .contact-third-section> h3 {
     font-size: clamp(1.5rem, 3vw, 3rem);
-    margin: 0 0 10px 0;
+    margin: 0 auto 10px auto;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     letter-spacing: 0.5px;
+    width: 90%;
 }
 .contact-third-section> p {
-    margin: 0 0 1.5em 0;
+    width: 90%;
+    margin: 0 auto 1.5em auto;
+}
+.contact-third-section> h3,
+.contact-third-section> p {
+    text-align: center;
 }
 .faq-wrap {
     width: 90%;
@@ -57,9 +63,14 @@
 }
 @media only screen and (max-width: 599px) {
     .faq-list {
-        width: 100%;
+        width: 90%;
     }
     .faq-button {
+        text-align: left;
+    }
+    .contact-third-section> h3,
+    .contact-third-section> p {
+        width: 80%;
         text-align: left;
     }
 }
